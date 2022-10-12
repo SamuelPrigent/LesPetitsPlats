@@ -42,7 +42,7 @@ function getRecipeCard(data) {
     // Ingredient Name
     const ingredientName = document.createElement("div");
     ingredientName.classList.add("card-recipes-txt-bottom-left-bold");
-    ingredientName.innerText = element.ingredient;
+    ingredientName.innerText = `${element.ingredient}`;
     // Ingredient Qty
     const ingredientQty = document.createElement("div");
     ingredientQty.classList.add("card-recipes-txt-bottom-left-quantity");
@@ -96,6 +96,9 @@ function getRecipeCard(data) {
   textBottom.appendChild(textBottomLeft);
   textBottom.appendChild(textBottomRight);
   // Text Bottom Left // via boucle
+
+  // Nav via tab index
+  article.setAttribute("tabindex", 0);
 
   return article;
 }
