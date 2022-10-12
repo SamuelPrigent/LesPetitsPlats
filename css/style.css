@@ -1,0 +1,234 @@
+/* Header */
+
+body {
+  font-family: DM Sans;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  border: 0px solid black;
+  text-align: center;
+  margin: 28px 0px 28px;
+  gap: 6px;
+}
+
+.header-title {
+  font-size: 32px;
+  font-weight: 600;
+  color: #d04f4f;
+}
+
+.header-logo {
+  height: 44px;
+}
+
+/* Main contener */
+
+#main {
+  width: 90%;
+  border: 0px solid black;
+  box-sizing: border-box;
+  margin: auto;
+}
+
+/* Search Bar */
+.div-search-bar {
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.search-bar {
+  background-color: #e5e5e5;
+  border: none;
+  width: 100%;
+  height: 43px;
+  border-radius: 4px;
+  margin: auto;
+  padding: 5px 15px 5px;
+  font-size: 15px;
+}
+
+.search-bar:focus {
+}
+
+.search-icon-div {
+  display: flex;
+  height: 100%;
+  width: 40px;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 3px;
+  bottom: 0px;
+  top: 0px;
+}
+
+.search-icon {
+  height: 25px;
+}
+
+/* filter */
+
+.div-filter {
+  font-family: DM Sans;
+  font-size: 15px;
+  display: flex;
+  gap: 10px;
+  height: 40px;
+  border: 0px solid black;
+}
+
+.button-filter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: DM Sans;
+  font-size: 15px;
+  border: 1px solid green;
+  padding: 15px;
+}
+
+/* Recipes */
+
+.section-recipes {
+  font-family: Lato;
+  border: 0px solid black;
+  margin-top: 50px;
+  height: auto;
+  /* Grid of 3 column */
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 47px;
+}
+
+/* Card recipes */
+.card-recipes {
+  border: 0px solid blue;
+  min-height: 353px;
+  /* aspect-ratio: 380/364; */
+}
+
+/* img lambda */
+.card-recipes-img {
+  background-color: #c7bebe;
+  min-height: 49%;
+  max-height: 49%;
+  border-radius: 5px 5px 0px 0px;
+}
+
+.card-recipes-txt {
+  display: flex;
+  border-radius: 0px 0px 5px 5px;
+  flex-direction: column;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 400;
+  background-color: #e7e7e7;
+  min-height: 51%;
+  max-height: 51%;
+  box-sizing: border-box;
+  padding: 17px 20px 25px;
+  border: 0px solid black;
+}
+
+.card-recipes-txt-top {
+  box-sizing: border-box;
+  border: 0px solid black;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 400;
+  box-sizing: border-box;
+  margin-bottom: 16px;
+  min-height: 30px;
+  max-height: 30px;
+  overflow: hidden;
+  flex-wrap: nowrap;
+  font-size: 16px;
+}
+
+.card-recipes-txt-top-left {
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.1;
+  /* white-space: nowrap; */
+  /* max-width: 160px; */
+}
+
+.card-recipes-txt-top-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: bold;
+  font-size: 17px;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+
+.card-recipes-txt-bottom {
+  display: flex;
+  justify-content: space-between;
+  border: 0px solid black;
+  font-size: 11.5px;
+}
+
+.card-recipes-txt-bottom-left {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-width: 45%;
+}
+
+.card-recipes-txt-bottom-left-line {
+  display: flex;
+  gap: 3px;
+  min-height: 13px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.card-recipes-txt-bottom-left-bold {
+  font-weight: bold;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.card-recipes-txt-bottom-left-quantity {
+  /* overflow: hidden;
+  text-overflow: ellipsis; */
+  white-space: nowrap;
+}
+
+.card-recipes-txt-bottom-right {
+  max-width: 51%;
+  border: 0px solid black;
+  max-height: 93px;
+  max-height: 69.6px;
+  /* Show ... line 6 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+}
+
+.time-icon {
+  height: 21px;
+  top: 0.3px;
+  position: relative;
+}
+
+/* Footer */
+footer {
+  height: 40px;
+}
