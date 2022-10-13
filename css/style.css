@@ -44,6 +44,7 @@ header {
 }
 
 .search-bar {
+  font-family: Noto Sans;
   background-color: #e5e5e5;
   border: none;
   width: 100%;
@@ -62,7 +63,7 @@ header {
 .search-bar:focus {
   outline: none;
   border: 1px solid #0085f2;
-  box-shadow: 0px 0px 0px 3px rgba(0, 144, 237, 0.4);
+  box-shadow: 0px 0px 0px 3px rgba(0, 142, 237, 0.263);
 }
 
 .search-icon-div {
@@ -137,10 +138,23 @@ header {
   border: 0px solid black;
   margin-top: 40px;
   height: auto;
-  /* Grid of 3 column */
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 47px;
+}
+
+@media screen and (max-width: 1200px) {
+  .section-recipes {
+    grid-template-columns: 1fr 1fr;
+    gap: 47px;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .section-recipes {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
 }
 
 /* Card recipes */
@@ -152,7 +166,7 @@ header {
 .card-recipes:focus {
   outline: none;
   border: 1px solid #0085f2;
-  box-shadow: 0px 0px 0px 3px rgba(0, 144, 237, 0.4);
+  box-shadow: 0px 0px 0px 3px rgba(0, 142, 237, 0.263);
   border-radius: 6px;
 }
 
