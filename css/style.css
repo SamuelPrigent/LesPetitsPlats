@@ -101,7 +101,7 @@ header {
   justify-content: space-between;
   font-family: DM Sans;
   font-size: 16px;
-  padding: 10px 18px 10px;
+  padding: 11px 17px 11px;
   border-radius: 5px;
   height: 35px;
   color: white;
@@ -117,6 +117,7 @@ header {
 
 .button-filter-arrow {
   height: 10.5px;
+  transition: 0.3s;
 }
 
 .button-filter-blue {
@@ -129,6 +130,90 @@ header {
 
 .button-filter-red {
   background-color: #ed6454;
+}
+
+/* Filter Dropdown */
+.dropdown {
+  position: relative;
+}
+
+.dropdown * {
+  box-sizing: border-box;
+}
+
+.dropdown-select {
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid rgb(86, 86, 86);
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  transition: background 0.3s;
+  gap: 10px;
+  user-select: none;
+}
+
+.dropdown-select:hover {
+  background-color: rgb(63, 63, 63);
+}
+
+.dropdown-arrow {
+  height: 0;
+  width: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid #fff;
+  transition: 0.3s;
+}
+
+.dropdown-menu {
+  list-style: none;
+  padding: 5px 10px;
+  background-color: rgb(63, 63, 63);
+  border: 1px solid black;
+  border-radius: 5px;
+  color: white;
+  position: absolute;
+  top: 46px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: 0.2s;
+  opacity: 0;
+  display: none;
+  z-index: 1;
+}
+
+.dropdown-menu-open {
+  display: block;
+  opacity: 1;
+}
+
+.dropdown-menu li {
+  padding: 0.7em 0.5em;
+  margin: 0.3em 0;
+  border-radius: 0.5em;
+  cursor: pointer;
+}
+
+.dropdown-menu li:hover {
+  background-color: rgb(48, 49, 97);
+}
+
+/* Add via JS */
+.dropdown-select-clicked {
+  border: 2px solid blue;
+  box-shadow: 0px 0px 0px 3px rgba(0, 142, 237, 0.263);
+}
+
+.dropdown-arrow-rotate {
+  transform: rotate(180deg);
+}
+
+.active {
+  background-color: rgb(41, 41, 41);
 }
 
 /* Recipes */
