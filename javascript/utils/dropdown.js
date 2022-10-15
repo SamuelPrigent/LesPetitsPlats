@@ -1,5 +1,5 @@
 // Dropdown of filter buttons
-const dropdowns = document.querySelectorAll(".dropdown"); // moi j'en ai que 1
+const dropdowns = document.querySelectorAll(".dropdown"); // récupère les 3 dropdown
 
 dropdowns.forEach((dropdown) => {
   // get dom element
@@ -19,7 +19,7 @@ dropdowns.forEach((dropdown) => {
   //
   options.forEach((option) => {
     option.addEventListener("click", () => {
-      selected.innerText = option.innerText; // replace text
+      //   selected.innerText = option.innerText; // replace text
       select.classList.remove("dropdown-select-clicked");
       arrow.classList.remove("dropdown-arrow-rotate");
       menu.classList.remove("dropdown-menu-open");
