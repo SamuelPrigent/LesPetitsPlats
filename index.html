@@ -46,49 +46,60 @@
         </div>
       </div>
       <div class="div-filter">
+        <!-- Barre de recherche boutons à intégrer -->
         <!-- 
             <div class="dropdown-search">
             <input class="dropdown-search-input" type="text" />
             </div> 
         -->
 
-        <!-- Test -->
-
+        <!-- Dropdown Ingrédients -->
         <div tabindex="0" class="dropdown">
-          <div class="dropdown-select">
-            <div class="dropdown-selected">First</div>
+          <div class="dropdown-select button-filter-blue">
+            <div class="dropdown-selected">Ingrédients</div>
             <img class="button-filter-arrow" src="assets/arrowDown.svg" />
           </div>
-          <ul class="dropdown-menu">
-            <li>First</li>
-            <li>Second</li>
-            <li>Third</li>
-          </ul>
+          <ul
+            id="section-ingredient"
+            class="dropdown-menu button-filter-blue"
+          ></ul>
         </div>
-
-        <!-- Fin Test -->
-
-        <div class="button-filter button-filter-blue">
-          <div>Ingrédients</div>
-          <img class="button-filter-arrow" src="assets/arrowDown.svg" />
+        <!-- Fin -->
+        <!-- Dropdown Appareils -->
+        <div tabindex="0" class="dropdown">
+          <div class="dropdown-select button-filter-green">
+            <div class="dropdown-selected">Appareils</div>
+            <img class="button-filter-arrow" src="assets/arrowDown.svg" />
+          </div>
+          <ul
+            id="section-apparel"
+            class="dropdown-menu button-filter-green"
+          ></ul>
         </div>
-        <div class="button-filter button-filter-green">
-          <div>Appareils</div>
-          <img class="button-filter-arrow" src="assets/arrowDown.svg" />
+        <!-- Fin -->
+        <!-- Dropdown Ustensiles -->
+        <div tabindex="0" class="dropdown">
+          <div class="dropdown-select button-filter-red">
+            <div class="dropdown-selected">Ustensiles</div>
+            <img class="button-filter-arrow" src="assets/arrowDown.svg" />
+          </div>
+          <ul
+            id="section-ustensil"
+            class="dropdown-menu button-filter-red"
+          ></ul>
         </div>
-        <div class="button-filter button-filter-red">
-          <div>Ustensile</div>
-          <img class="button-filter-arrow" src="assets/arrowDown.svg" />
-        </div>
+        <!-- Fin -->
       </div>
+
       <div class="section-recipes">
-        <!-- Cards Created Here ... -->
+        <!-- Recipes Card Created Here ... -->
       </div>
     </main>
     <footer></footer>
     <!-- JS -->
     <script src="./data/recipes.js"></script>
     <script src="javascript/factory/recipeCard.js"></script>
+    <script src="javascript/factory/filterList.js"></script>
     <script src="javascript/pages/index.js"></script>
     <script src="javascript/utils/dropdown.js"></script>
   </body>

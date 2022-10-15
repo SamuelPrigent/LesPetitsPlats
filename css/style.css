@@ -117,24 +117,28 @@ header {
 
 .button-filter-arrow {
   height: 10.5px;
-  transition: 0.3s;
+  transition: 0.25s;
 }
 
 .button-filter-blue {
-  background-color: #3282f7;
+  background-color: #3282f7 !important;
 }
 
 .button-filter-green {
-  background-color: #68d9a4;
+  /* Couleur maquette mais peu accessible */
+  /* background-color: #68d9a4 !important; */
+  background-color: #1ac978 !important;
 }
 
 .button-filter-red {
-  background-color: #ed6454;
+  background-color: #ed6454 !important;
 }
 
 /* Filter Dropdown */
 .dropdown {
   position: relative;
+  outline: none;
+  font-size: 15.5px;
 }
 
 .dropdown * {
@@ -142,17 +146,21 @@ header {
 }
 
 .dropdown-select {
-  background-color: black;
-  color: white;
+  /* border: 2px solid rgb(86, 86, 86); */
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  border: 2px solid rgb(86, 86, 86);
-  border-radius: 5px;
-  padding: 10px;
-  cursor: pointer;
+  justify-content: space-between;
+  font-family: DM Sans;
+  background-color: black;
   transition: background 0.3s;
   gap: 10px;
+  font-size: 16px;
+  padding: 11px 17px 11px;
+  border-radius: 5px;
+  height: 56px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
   user-select: none;
 }
 
@@ -171,19 +179,24 @@ header {
 
 .dropdown-menu {
   list-style: none;
-  padding: 5px 10px;
+  padding: 7px;
   background-color: rgb(63, 63, 63);
-  border: 1px solid black;
   border-radius: 5px;
   color: white;
   position: absolute;
-  top: 46px;
+  top: 60px;
   left: 50%;
   transform: translateX(-50%);
   transition: 0.2s;
   opacity: 0;
   display: none;
   z-index: 1;
+  overflow-y: scroll;
+  max-height: 400px;
+  width: 100%;
+  /* test */
+  /* display: grid;
+  grid-template-columns: 1fr 1fr 1fr; */
 }
 
 .dropdown-menu-open {
@@ -192,20 +205,24 @@ header {
 }
 
 .dropdown-menu li {
-  padding: 0.7em 0.5em;
-  margin: 0.3em 0;
-  border-radius: 0.5em;
+  padding: 9px 10px;
+  border-radius: 5px;
   cursor: pointer;
 }
 
+.dropdown-menu li::first-letter {
+  text-transform: uppercase;
+}
+
 .dropdown-menu li:hover {
-  background-color: rgb(48, 49, 97);
+  background-color: #4444445c;
 }
 
 /* Add via JS */
 .dropdown-select-clicked {
-  border: 2px solid blue;
-  box-shadow: 0px 0px 0px 3px rgba(0, 142, 237, 0.263);
+  /* Si je souhaite mettre un style lors du click sur un filtre */
+  /* border: 2px solid blue; */
+  /* box-shadow: 0px 0px 0px 3px rgba(0, 142, 237, 0.263); */
 }
 
 .dropdown-arrow-rotate {

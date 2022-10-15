@@ -9,8 +9,6 @@ dropdowns.forEach((dropdown) => {
   const options = dropdown.querySelectorAll(".dropdown-menu li");
   const selected = dropdown.querySelector(".dropdown-selected");
 
-  console.log(options);
-
   // add event listener
   select.addEventListener("click", () => {
     select.classList.toggle("dropdown-select-clicked"); // add style clicked element
