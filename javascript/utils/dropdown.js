@@ -7,8 +7,7 @@ dropdowns.forEach((dropdown) => {
   const arrow = dropdown.querySelector(".button-filter-arrow");
   const menu = dropdown.querySelector(".dropdown-menu");
   const options = dropdown.querySelectorAll(".dropdown-menu li");
-  //   const selected = dropdown.querySelector(".dropdown-selected");
-
+  // const selected = dropdown.querySelector(".dropdown-selected");
   // button element
   const ingredientFilterList = document.querySelector("#section-ingredient");
   const apparelFilterList = document.querySelector("#section-apparel");
@@ -20,7 +19,7 @@ dropdowns.forEach((dropdown) => {
 
   // Button [Ingredients, Appareils, Ustensils]
   select.addEventListener("click", () => {
-    // Close all list before open one new
+    // Close menu if open an other
     if (menu != ingredientFilterList) {
       ingredientFilterList.classList.remove("dropdown-menu-open");
       arrowIngredient.classList.remove("dropdown-arrow-rotate");
@@ -33,7 +32,7 @@ dropdowns.forEach((dropdown) => {
       ustensilFilterList.classList.remove("dropdown-menu-open");
       arrowUstensil.classList.remove("dropdown-arrow-rotate");
     }
-    // Toggle on clicked filter
+    // Toggle menu on clicked element
     arrow.classList.toggle("dropdown-arrow-rotate"); // arrow animation
     menu.classList.toggle("dropdown-menu-open"); // toggle menu
     // select.classList.toggle("dropdown-select-clicked"); // style on filter button

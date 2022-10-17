@@ -82,6 +82,44 @@ header {
   height: 25px;
 }
 
+/* Tag Section */
+
+.section-tag {
+  display: flex;
+  width: 100%;
+  justify-content: start;
+  gap: 10px;
+  height: auto;
+  margin-bottom: 16px;
+}
+
+.tagFilter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 5px;
+  height: 20px;
+  padding: 10px 16px;
+  background-color: #0085f2;
+  width: auto;
+  color: white;
+  user-select: none;
+}
+
+.tagFilter-txt {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.tagFilter-txt::first-letter {
+  text-transform: uppercase;
+}
+
+.tagFilter-svg {
+  height: 19px;
+  cursor: pointer;
+}
+
 /* filter */
 
 .div-filter {
