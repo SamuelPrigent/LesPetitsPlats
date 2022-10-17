@@ -58,28 +58,28 @@ UstensilsArray.sort((a, b) => (a > b ? 1 : -1));
 // console.log(UstensilsArray);
 
 //
-// ====== Create List in Dropdown menu with Lists ======
+// ====== Create List in Dropdown menu ======
 
 // Create Ingredients List
 IngredientsArray.forEach((element) => {
-  const newFilter = getFilter(element);
+  const newFilter = getIngredientFilter(element);
   ingredientSection.appendChild(newFilter);
 });
 
 // Create Apparel List
 ApparelArray.forEach((element) => {
-  const newFilter = getFilter(element);
+  const newFilter = getApparelFilter(element);
   apparelSection.appendChild(newFilter);
 });
 
 // Create Ustensils List
 UstensilsArray.forEach((element) => {
-  const newFilter = getFilter(element);
+  const newFilter = getUstensilFilter(element);
   ustensilSection.appendChild(newFilter);
 });
 
 //
-// ======== Action des Filtre - Eventlistener sur lestag ?  ========
+// ======== Action des Filtres - Eventlistener sur tag présents ?  ========
 
 // (Element qui ne contiennent QUE Saladier)
 const apparel = recipes.filter((element) => element.appliance == "Saladier");

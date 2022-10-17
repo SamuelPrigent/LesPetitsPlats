@@ -1,31 +1,23 @@
-// Create one filter
-function getFilter(element) {
+// Factory for Ingredient Filter
+function getIngredientFilter(element) {
   const filter = document.createElement("li");
   filter.innerText = element;
-  filter.classList.add("filter");
+  filter.classList.add("ingredient-filter");
   return filter;
 }
 
-// // get ingredient Filter
-// function getFilter(element) {
-//   const filter = document.createElement("li");
-//   filter.innerText = element;
-//   filter.classList.add("filter");
-//   return filter;
-// }
+// Factory for Apparel Filter
+function getApparelFilter(element) {
+  const filter = document.createElement("li");
+  filter.innerText = element;
+  filter.classList.add("apparel-filter");
+  return filter;
+}
 
-// // get Apparel Filter
-// function getFilter(element) {
-//   const filter = document.createElement("li");
-//   filter.innerText = element;
-//   filter.classList.add("filter");
-//   return filter;
-// }
-
-// // get Ustensils Filter
-// function getFilter(element) {
-//   const filter = document.createElement("li");
-//   filter.innerText = element;
-//   filter.classList.add("filter");
-//   return filter;
-// }
+// Factory for Ustensil Filter
+function getUstensilFilter(element) {
+  const filter = document.createElement("li");
+  filter.innerText = element;
+  filter.classList.add("ustensil-filter");
+  return filter;
+}

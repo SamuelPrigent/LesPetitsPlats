@@ -39,7 +39,7 @@ header {
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin-bottom: 24px;
+  margin-bottom: 15px;
   position: relative;
 }
 
@@ -90,7 +90,6 @@ header {
   justify-content: start;
   gap: 10px;
   height: auto;
-  margin-bottom: 16px;
 }
 
 .tagFilter {
@@ -100,10 +99,11 @@ header {
   border-radius: 5px;
   height: 20px;
   padding: 10px 16px;
-  background-color: #0085f2;
   width: auto;
   color: white;
   user-select: none;
+  margin-bottom: 15px;
+  /* background-color: #0085f2; */
 }
 
 .tagFilter-txt {
