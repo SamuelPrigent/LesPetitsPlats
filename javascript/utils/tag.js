@@ -58,8 +58,23 @@ function createTag(tagName, type) {
   // Structure
   tag.appendChild(tagTxt);
   tag.appendChild(tagSvg);
-  const tagSection = document.querySelector(".section-tag");
-  tagSection.appendChild(tag);
+  // const tagSection = document.querySelector(".section-tag");
+  // tagSection.appendChild(tag);
+  const tagSectionIngredient = document.querySelector(
+    ".section-tag-ingredient"
+  );
+  const tagSectionApparel = document.querySelector(".section-tag-apparel");
+  const tagSectionUstensil = document.querySelector(".section-tag-ustensil");
+
+  if (type == "ingredient") {
+    tagSectionIngredient.appendChild(tag);
+  }
+  if (type == "apparel") {
+    tagSectionApparel.appendChild(tag);
+  }
+  if (type == "ustensil") {
+    tagSectionUstensil.appendChild(tag);
+  }
 
   // Event listener to Remove it
   tagSvg.addEventListener("click", () => {

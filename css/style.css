@@ -88,7 +88,16 @@ header {
   display: flex;
   width: 100%;
   justify-content: start;
-  gap: 10px;
+  height: auto;
+  flex-wrap: wrap;
+}
+
+.section-tag-ingredient,
+.section-tag-apparel,
+.section-tag-ustensil {
+  display: flex;
+  width: auto;
+  justify-content: start;
   height: auto;
 }
 
@@ -96,13 +105,15 @@ header {
   display: flex;
   align-items: center;
   gap: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
   border-radius: 5px;
   height: 20px;
   padding: 10px 16px;
   width: auto;
   color: white;
   user-select: none;
-  margin-bottom: 15px;
+  /* margin-bottom: 15px; */
   /* background-color: #0085f2; */
 }
 
