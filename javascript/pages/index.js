@@ -19,45 +19,61 @@ recipes.forEach((recipes) => {
 
 // === Listes d'Ingrédients - 114 ingrédients ===
 const IngredientsCombinaison = recipes.map((e) => e.ingredients); // all combinaison (recipes)
-const IngredientsValues = IngredientsCombinaison.flat(1); // all ingredients array with qty
-const IngredientOnlyArray = IngredientsValues.map((e) => e.ingredient); // all ingredient name with double
+const IngredientsValues = IngredientsCombinaison.flat(1); // all ingredients.array + qty + unit
+const IngredientOnlyArray = IngredientsValues.map((e) => e.ingredient); // all ingredient with double
 const IngredientOnlyArrayLowerCase = IngredientOnlyArray.map((element) => {
   return element.toLowerCase();
 });
-const IngredientsList = new Set(IngredientOnlyArrayLowerCase); // list without double (sauf err majuscules)
-const newIngredientsList = Array.from(IngredientsList);
-newIngredientsList.sort((a, b) => (a > b ? 1 : -1));
-// console.log(newIngredientsList);
+const IngredientsList = new Set(IngredientOnlyArrayLowerCase); // Remove Double
+const IngredientsArray = Array.from(IngredientsList);
+IngredientsArray.sort((a, b) => (a > b ? 1 : -1));
+// console.log(IngredientsArray);
 
 // === Liste des Appareils - 11 appareils ===
 const ApparelCombinaison = recipes.map((e) => e.appliance);
 const ApparelValues = ApparelCombinaison.flat(1); // all values with double
-const ApparelList = new Set(ApparelValues); // list without double
-// console.log(ApparelList);
+const newApparelList = Array.from(ApparelValues);
+const newApparelListWithoutUndefined = newApparelList.filter((element) => {
+  return element !== undefined;
+});
+const newApparelListLowercase = newApparelListWithoutUndefined.map(
+  (element) => {
+    return element.toLowerCase();
+  }
+);
+const ApparelList = new Set(newApparelListLowercase); // Remove Double
+const ApparelArray = Array.from(ApparelList);
+ApparelArray.sort((a, b) => (a > b ? 1 : -1));
+// console.log(ApparelArray);
 
-// === Listes des Ustensils - 29 ustensils ===
+// === Listes des Ustensils - 22 ustensils ===
 const UstensilsCombinaison = recipes.map((e) => e.ustensils);
 const UstensilsValues = UstensilsCombinaison.flat(1); // all values with double
-const UstensilsList = new Set(UstensilsValues); // list without double
-// console.log(UstensilsList);
+const UstensilsOnlyArrayLowerCase = UstensilsValues.map((element) => {
+  return element.toLowerCase();
+});
+const UstensilsList = new Set(UstensilsOnlyArrayLowerCase); // Remove Double
+const UstensilsArray = Array.from(UstensilsList);
+UstensilsArray.sort((a, b) => (a > b ? 1 : -1));
+// console.log(UstensilsArray);
 
 //
 // ====== Create List in Dropdown menu with Lists ======
 
 // Create Ingredients List
-newIngredientsList.forEach((element) => {
+IngredientsArray.forEach((element) => {
   const newFilter = getFilter(element);
   ingredientSection.appendChild(newFilter);
 });
 
 // Create Apparel List
-ApparelList.forEach((element) => {
+ApparelArray.forEach((element) => {
   const newFilter = getFilter(element);
   apparelSection.appendChild(newFilter);
 });
 
 // Create Ustensils List
-UstensilsList.forEach((element) => {
+UstensilsArray.forEach((element) => {
   const newFilter = getFilter(element);
   ustensilSection.appendChild(newFilter);
 });

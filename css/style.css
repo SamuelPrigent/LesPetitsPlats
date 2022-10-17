@@ -229,8 +229,9 @@ header {
   transform: rotate(180deg);
 }
 
+/* When we click one time on a filter */
 .active {
-  background-color: rgb(41, 41, 41);
+  /* background-color: rgb(41, 41, 41); */
 }
 
 /* Recipes */

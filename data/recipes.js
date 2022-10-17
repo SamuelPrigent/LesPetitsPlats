@@ -68,8 +68,8 @@ const recipes = [
     time: 60,
     description:
       "Découper le thon en dés, mettre dans un plat et recouvrir de jus de citron vert (mieux vaut prendre un plat large et peu profond). Laisser reposer au réfrigérateur au moins 2 heures. (Si possible faites-le le soir pour le lendemain. Après avoir laissé mariner le poisson, coupez le concombre en fines rondelles sans la peau et les tomates en prenant soin de retirer les pépins. Rayer la carotte. Ajouter les légumes au poissons avec le citron cette fois ci dans un Saladier. Ajouter le lait de coco. Pour ajouter un peu plus de saveur vous pouvez ajouter 1 à 2 cuillères à soupe de Crème de coco",
-    appliance: "Saladier",
-    ustensils: ["presse citron"],
+    // appliance: "",
+    ustensils: ["presse citron", "saladier"],
   },
   {
     id: 3,
@@ -261,8 +261,8 @@ const recipes = [
     time: 50,
     description:
       "Étaler la pate dans les moules à tartelette. Faire cuire la pate 30 minutes. Découper le chocolat en morceau et le faire chauffer, y ajouter la crème liquide, ajouter le beurre et remuer jusqu'à avoir une pâte homogène. Verser la pate sur les tartelettes. Couper les fraises en 2 et les positionner sur ",
-    appliance: "Four",
-    ustensils: ["moule à tartelettes (6)", "casserole"],
+    appliance: ["Four", "casserole"],
+    ustensils: ["moule à tartelettes (6)"],
   },
   {
     id: 8,
@@ -302,8 +302,8 @@ const recipes = [
     time: 60,
     description:
       "Hachez les noix grossièrement. Faire fondre le chocolat avec le beurre. Mélanger les oeufs et le sucre et mélanger au chocolat. Ajouter la farine. Mélanger afin d'avoir quelque chose d'homogène puis incorporer les noix. Verser la préparation dans un moule de préférence rectangulaire. Cuire 2O à 25 minutes à 180°. Sortez du four et attendez quelques minutes pour démouler. Servir avec une boule de glace pour plus de gourmandise.",
-    appliance: "Four",
-    ustensils: ["moule à gateaux", "casserole"],
+    appliance: ["Four", "casserole"],
+    ustensils: ["moule à gateaux"],
   },
   {
     id: 9,
@@ -335,8 +335,8 @@ const recipes = [
     time: 15,
     description:
       "Peler le concombre le couper 2, retirer les pépins. Couper les olives en morceaux, ainsi que le fromage de chèvre. Ajouter le basilic ainsi que le vinaigre balsamic et l'huile d'olives à votre gout.",
-    appliance: "Saladier",
-    ustensils: ["cuillère en bois", "couteau"],
+    // appliance: "",
+    ustensils: ["cuillère en bois", "couteau", "saladier"],
   },
   {
     id: 10,
@@ -411,8 +411,8 @@ const recipes = [
     time: 10,
     description:
       "Commencer par couper les feuilles de salade, ajouter les tomates cerises et le fromage découpé en cubes ou en boules avec la cuillère à melon. Découper le jambon de parme en fines lamelles. Ajouter la pomme elle aussi découpée en petit morceaux. Assaisonnez à votre gout. ",
-    appliance: "Saladier",
-    ustensils: ["couteau", "cuillère à melon"],
+    // appliance: "",
+    ustensils: ["couteau", "cuillère à melon", "saladier"],
   },
   {
     id: 12,
@@ -517,8 +517,8 @@ const recipes = [
     time: 100,
     description:
       "Mélanger la farine et les oeufs, faire fondre 25 grammes de beurre et ajouter à la pâte. Ajouter du sel. Laisser reposer 1 heure. Faire les galettes et laisser refroidir. Faire chauffer les saucisses avec du beurre et l'oignon. Enrouler les saucisses dans les crêpes avec une partie du fromage. Mettre le reste du fromage à raclette par dessus les crêpes. Passer four pendant 20 minutes",
-    appliance: "Four",
-    ustensils: ["poêle à frire", "couteau"],
+    appliance: ["Four", "poêle à frire"],
+    ustensils: ["couteau"],
   },
   {
     id: 15,
@@ -765,7 +765,7 @@ const recipes = [
     time: 30,
     description:
       "Cuisiner la viande hachée dans une poêle à frire. Dans une autre faire cuire les oignons découpés en fins dés avec un peu de beurre. Ajouter du vin rouge. Mélanger les oignons avec la viande hachée. Faire cuire les pates le temps indiqué sur le paquet. Ajouter le coulis de tomate à la viande hachée. Une fois que les pates sont cuites, ajouter la crème fraîche à la viande hachée. Servir.",
-    appliance: "Casserole",
+    appliance: ["Casserole", "poêle à frire"],
     ustensils: ["Cuillère en bois", "louche", "couteau"],
   },
   {
@@ -801,8 +801,8 @@ const recipes = [
     time: 30,
     description:
       "Faire fondre le chocolat et le beurre au bain marie. Dans un saladier battre les oeufs avec le sucre jusqu'à obtenir une texture de type mousse. Ajouter la farine ainsi que le mélange de beurre et chocolat fondu. Beurrez le moule à gateaux. Mettre au four préchauffé à 200° puis faites chauffer pendant 15 minutes. C'est prêt. Servir avec une boule de glace ou une crème dessert.",
-    appliance: "Four",
-    ustensils: ["moule à gateaux", "fouet", "casserole"],
+    appliance: ["Four", "casserole"],
+    ustensils: ["moule à gateaux", "fouet"],
   },
   {
     id: 23,
@@ -882,8 +882,8 @@ const recipes = [
     time: 40,
     description:
       "Découper le concombre et les tomates en dés, les mettre dans un saladier avec le mais et les miettes de poisson, ajouter les pates. Ajouter la mayonnaise. Mélanger le tout et servir frais.",
-    appliance: "Saladier",
-    ustensils: ["couteau", "cuillère en bois"],
+    // appliance: "",
+    ustensils: ["couteau", "cuillère en bois", "saladier"],
   },
   {
     id: 25,
@@ -917,9 +917,9 @@ const recipes = [
     ],
     time: 30,
     description:
-      "Faire fondre le beurre et le mélanger avec le sucre. Finalement ajouter l'oeuf. Ajouter la farine tout en mélangeant peu pa peu pour avoir une masse sans grumeaux. Ajouter les pépites de chocolat. Faire, une plaque de cuisson de petites boules pour les cookies. Mettre au four à 180° pour 10 minutes.",
-    appliance: "Four",
-    ustensils: ["fouet", "saladier", "plaque de cuisson"],
+      "Faire fondre le beurre et le mélanger avec le sucre. Finalement ajouter l'oeuf. Ajouter la farine tout en mélangeant peu pa peu pour avoir une masse sans grumeaux. Ajouter les pépites de chocolat. Disposer sur un plateau de cuisson de petites boules pour les cookies. Mettre au four à 180° pour 10 minutes.",
+    appliance: ["Four"],
+    ustensils: ["fouet", "saladier"],
   },
   {
     id: 26,
@@ -950,8 +950,8 @@ const recipes = [
     time: 25,
     description:
       "Verser de l'huile dans une cocotte minute couper les légumes et les verser dans l'huile chaude. Laisser cuire et remuer pendant 10 minutes. Passer aux mixer. Servir.",
-    appliance: "Mixer",
-    ustensils: ["cocotte minute", "couteau"],
+    appliance: ["Mixer", "Cocotte"],
+    ustensils: ["couteau"],
   },
   {
     id: 27,
@@ -1021,8 +1021,8 @@ const recipes = [
     time: 80,
     description:
       "Émincer les blanc de poireaux et les faire chauffer dans 25 grammes de beurre. AJouter les pommes de terres coupées en morceaux. Ajouter l'eau et laisser mijoter pour 45 minutes. Chauffer l'oseille avec le beurre restant puis incorporer le tout. Mixez. Ajoutez la crème. Bon appetit.",
-    appliance: "Mixer",
-    ustensils: ["casserole", "couteau"],
+    appliance: ["Mixer", "casserole"],
+    ustensils: ["couteau"],
   },
   {
     id: 29,
@@ -1079,8 +1079,8 @@ const recipes = [
     time: 60,
     description:
       "Mettre tous les ingrédients dans une cocotte. ajouter de l'eau pour recouvrir l'ensemble et laisser cuire à petit feu pour 1 heure. Passer au mixer. Salez, poivrez. C'est prêt",
-    appliance: "Mixer",
-    ustensils: ["casserole", "cuillère en bois"],
+    appliance: ["Mixer", "casserole"],
+    ustensils: ["cuillère en bois"],
   },
   {
     id: 31,
@@ -1261,8 +1261,8 @@ const recipes = [
     time: 25,
     description:
       "Éplucher les légumes, les couper en morceaux et les mettre à cuire dans une cocotte minute environ 15 minutes. Mixer en ajoutant le beurre, la crème. Ajouter le cumin et la noix de muscade.",
-    appliance: "Mixer",
-    ustensils: ["cocotte minute", "couteau", "cuillère en bois"],
+    appliance: ["Mixer", "Cocotte"],
+    ustensils: ["couteau", "cuillère en bois"],
   },
   {
     id: 36,
@@ -1341,8 +1341,8 @@ const recipes = [
     time: 60,
     description:
       "Couper les courgettes dans le sens de la longueur. Vider les courgette dans un saladier. Réserver.Faire revenir la chair des courgettes dans 25cl d'huile d'olive. Ajouter l'oignon puis la viande hachée. Mettre la farce dans les courgettes. Ajouter le coulis de tomate. Mettre au four pendant 30 minutes. Avant la fin de la cuisson ajouter le fromage râpé",
-    appliance: "Four",
-    ustensils: ["couteau", "cuillère en bois", "poêle à frire"],
+    appliance: ["Four", "poêle à frire"],
+    ustensils: ["couteau", "cuillère en bois"],
   },
   {
     id: 38,
@@ -1434,8 +1434,8 @@ const recipes = [
     time: 10,
     description:
       "Dans un saladier mettre l'eau, le jus des citrons et le sucre. Bien mélanger. Ajouter le bicarbonate. Servir. Ajouter des glaçon et une feuille de menthe pour la déco.",
-    appliance: "Saladier",
-    ustensils: ["cuillère en bois"],
+    // appliance: "",
+    ustensils: ["cuillère en bois", "saladier"],
   },
   {
     id: 41,
@@ -1490,8 +1490,8 @@ const recipes = [
     time: 60,
     description:
       "Commencez par préparer la mousse au chocolat au moins 2 heures avant. Quand la mousse est prête et a reposée. Alors mouiller les boudoirs dans le jus des poires. Disposer. Alterner : mousse au chocolat, boudoirs et poires. Mettre au frais.",
-    appliance: "Moule à charlotte",
-    ustensils: ["saladier", "couteau", "fouet"],
+    // appliance: "Moule à charlotte",
+    ustensils: ["saladier", "couteau", "fouet", "Moule à charlotte"],
   },
   {
     id: 43,
@@ -1665,8 +1665,8 @@ const recipes = [
     time: 5,
     description:
       "Mélanger le jus de citron avec le sucre et la mascarpone. Ajouter la crème fraîche. Mélanger le tout et mettre au congélateur pendant 1 heure. Servir",
-    appliance: "Saladier",
-    ustensils: ["fouet", "verres", "cuillère en bois"],
+    // appliance: "",
+    ustensils: ["fouet", "verres", "cuillère en bois", "saladier"],
   },
   {
     id: 48,
