@@ -1,4 +1,4 @@
-// ====== Event listener => CreateTag ======
+// ====== 3 Event listener => CreateTag ======
 
 // Add Ingredient Tag
 const ingredientFilter = document.querySelectorAll(".ingredient-filter");
@@ -29,7 +29,7 @@ ustensilFilter.forEach((element) => {
 
 // ====== CreateTag with Category Color ======
 
-// Create Tag with 3 possible color
+// Create Tag (html / css)
 function createTag(tagName, type) {
   // console.log(tagName, type);
 

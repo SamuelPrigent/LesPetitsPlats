@@ -17,7 +17,7 @@ recipes.forEach((recipes) => {
 
 // Généreration d'une liste pour chaque filtre : [ Ingrédients - Ustensiles - Appareil ]
 
-// === Listes d'Ingrédients - 114 ingrédients ===
+// === Listes d'Ingrédients - 112 ingrédients ===
 const IngredientsCombinaison = recipes.map((e) => e.ingredients); // all combinaison (recipes)
 const IngredientsValues = IngredientsCombinaison.flat(1); // all ingredients.array + qty + unit
 const IngredientOnlyArray = IngredientsValues.map((e) => e.ingredient); // all ingredient with double
@@ -29,7 +29,7 @@ const IngredientsArray = Array.from(IngredientsList);
 IngredientsArray.sort((a, b) => (a > b ? 1 : -1));
 // console.log(IngredientsArray);
 
-// === Liste des Appareils - 11 appareils ===
+// === Liste des Appareils - 10 appareils ===
 const ApparelCombinaison = recipes.map((e) => e.appliance);
 const ApparelValues = ApparelCombinaison.flat(1); // all values with double
 const newApparelList = Array.from(ApparelValues);
