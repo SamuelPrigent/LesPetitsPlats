@@ -94,7 +94,9 @@ function searchRecipe() {
 
   // Check if mach for all items => hide those who don't match
   recipeArray.forEach((element) => {
-    // const text = element.innerText.toLocaleLowerCase(); // Tout le text de l'élément
+    // Selection si l'on voudrait chercher aussi dans les ingrédients et la quantité
+    // const text = element.innerText.toLocaleLowerCase();
+    // const textSimple = text.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 
     // Titre
     const textTitle = element
@@ -115,19 +117,33 @@ function searchRecipe() {
 
     // search.length >= 3
     if (search.length >= 3) {
+      if (
+        textTitle.includes(search) ||
+        textDsc.includes(search) ||
+        textTitleSimple.includes(search) ||
+        textDscSimple.includes(search)
+      ) {
+        // reshow it after hide it
+        element.style.display = "";
+        //   console.log(text);
+      } else {
+        // hide it
+        element.style.display = "none";
+      }
     }
-    if (
-      textTitle.includes(search) ||
-      textDsc.includes(search) ||
-      textTitleSimple.includes(search) ||
-      textDscSimple.includes(search)
-    ) {
-      // reshow it after hide it
-      element.style.display = "";
-      //   console.log(text);
-    } else {
-      // hide it
-      element.style.display = "none";
+    if (search.length < 3) {
+      if (
+        textTitle.includes(search) ||
+        textDsc.includes(search) ||
+        textTitleSimple.includes(search) ||
+        textDscSimple.includes(search)
+      ) {
+        // reshow it after hide it
+        element.style.display = "";
+        //   console.log(text);
+      } else {
+        // dont hide it cause search.lengh < 3
+      }
     }
   });
 }
