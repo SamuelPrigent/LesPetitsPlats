@@ -1,12 +1,13 @@
-// ====== Display data (recipes) ======
-
-// Dom elements
+// ====== Dom elements ======
 const recipesSection = document.querySelector(".section-recipes");
 const ingredientSection = document.querySelector("#section-ingredient");
 const apparelSection = document.querySelector("#section-apparel");
 const ustensilSection = document.querySelector("#section-ustensil");
 
-// forEach Recipe => Create Card via a Factory Patern (getRecipeCard)
+//
+// ====== Factory for Recipes Card ======
+
+// Create Recipes Card [50]
 recipes.forEach((recipes) => {
   const newRecipeCard = getRecipeCard(recipes);
   recipesSection.appendChild(newRecipeCard);
@@ -15,9 +16,9 @@ recipes.forEach((recipes) => {
 //
 // ====== Filtres ======
 
-// Généreration d'une liste pour chaque filtre : [ Ingrédients - Ustensiles - Appareil ]
+// === Création listes sans doubles [ingrédients, ustensiles, appareil] ===
 
-// === Listes d'Ingrédients - 112 ingrédients ===
+// === Listes des ingrédients [112] ===
 const IngredientsCombinaison = recipes.map((e) => e.ingredients); // all combinaison (recipes)
 const IngredientsValues = IngredientsCombinaison.flat(1); // all ingredients.array + qty + unit
 const IngredientOnlyArray = IngredientsValues.map((e) => e.ingredient); // all ingredient with double
@@ -29,7 +30,7 @@ const IngredientsArray = Array.from(IngredientsList);
 IngredientsArray.sort((a, b) => (a > b ? 1 : -1));
 // console.log(IngredientsArray);
 
-// === Liste des Appareils - 10 appareils ===
+// === Liste des appareils [10] ===
 const ApparelCombinaison = recipes.map((e) => e.appliance);
 const ApparelValues = ApparelCombinaison.flat(1); // all values with double
 const newApparelList = Array.from(ApparelValues);
@@ -46,7 +47,7 @@ const ApparelArray = Array.from(ApparelList);
 ApparelArray.sort((a, b) => (a > b ? 1 : -1));
 // console.log(ApparelArray);
 
-// === Listes des Ustensils - 22 ustensils ===
+// === Listes des ustensils [22] ===
 const UstensilsCombinaison = recipes.map((e) => e.ustensils);
 const UstensilsValues = UstensilsCombinaison.flat(1); // all values with double
 const UstensilsOnlyArrayLowerCase = UstensilsValues.map((element) => {
@@ -58,7 +59,7 @@ UstensilsArray.sort((a, b) => (a > b ? 1 : -1));
 // console.log(UstensilsArray);
 
 //
-// ====== Create List in Dropdown menu ======
+// ====== Factory for Dropdown List ======
 
 // Create Ingredients List
 IngredientsArray.forEach((element) => {
@@ -79,8 +80,108 @@ UstensilsArray.forEach((element) => {
 });
 
 //
-// ======== Action des Filtres - Eventlistener sur tag présents ?  ========
+// ====== Fonctionnalités de Recherche ======
 
-// (Element qui ne contiennent QUE Saladier)
-const apparel = recipes.filter((element) => element.appliance == "Saladier");
+// === Barre principale (recettes) ===
+
+// === Dropdown - recherche ingrédient ===
+function searchIngredient() {
+  // get input value
+  const searchBar = document.getElementById("searchIngredient");
+  const search = searchBar.value.toLowerCase();
+  // const for loop
+  const ul = document.getElementById("section-ingredient");
+  const li = ul.getElementsByTagName("li");
+  const liArray = Array.from(li);
+
+  // Check if mach for all items => hide those who don't match
+  liArray.forEach((element) => {
+    const text = element.innerText.toLocaleLowerCase();
+    // const newText = text.charAt(0).toUpperCase() + text.slice(1); // Capitalise first letter like in HTML
+
+    if (text.includes(search)) {
+      // reshow it after hide it
+      element.style.display = "";
+    } else {
+      // hide it
+      element.style.display = "none";
+    }
+  });
+}
+
+const ingredientSearchBar = document.getElementById("searchIngredient");
+// Change on Input
+ingredientSearchBar.addEventListener("input", (e) => {
+  searchIngredient();
+});
+
+// === Dropdown - recherche appareil ===
+function searchApparel() {
+  // get input value
+  const searchBar = document.getElementById("searchApparel");
+  const search = searchBar.value.toLowerCase();
+  // const for loop
+  const ul = document.getElementById("section-apparel");
+  const li = ul.getElementsByTagName("li");
+  const liArray = Array.from(li);
+
+  // Check if mach for all items => hide those who don't match
+  liArray.forEach((element) => {
+    const text = element.innerText.toLocaleLowerCase();
+    // const newText = text.charAt(0).toUpperCase() + text.slice(1); // Capitalise first letter like in HTML
+
+    if (text.includes(search)) {
+      // reshow it after hide it
+      element.style.display = "";
+    } else {
+      // hide it
+      element.style.display = "none";
+    }
+  });
+}
+
+const apparelSearchBar = document.getElementById("searchApparel");
+// Change on Input
+apparelSearchBar.addEventListener("input", (e) => {
+  searchApparel();
+});
+
+// === Dropdown - recherche ustensil ===
+function searchUstensil() {
+  // get input value
+  const searchBar = document.getElementById("searchUstensil");
+  const search = searchBar.value.toLowerCase();
+  // const for loop
+  const ul = document.getElementById("section-ustensil");
+  const li = ul.getElementsByTagName("li");
+  const liArray = Array.from(li);
+
+  // Check if mach for all items => hide those who don't match
+  liArray.forEach((element) => {
+    const text = element.innerText.toLocaleLowerCase();
+    // const newText = text.charAt(0).toUpperCase() + text.slice(1); // Capitalise first letter like in HTML
+
+    if (text.includes(search)) {
+      // reshow it after hide it
+      element.style.display = "";
+    } else {
+      // hide it
+      element.style.display = "none";
+    }
+  });
+}
+
+const ustensilSearchBar = document.getElementById("searchUstensil");
+// Change on Input
+ustensilSearchBar.addEventListener("input", (e) => {
+  searchUstensil();
+});
+
+//
+// ====== Fonctionnalités des Tags (filtres)  ======
+
+// === Recherche dans la barre de principale ===
+// const apparel = recipes.filter((element) => element.appliance == "Saladier");
 // console.log(apparel);
+
+// === TAG - Eventlistener sur tag existant ? ===

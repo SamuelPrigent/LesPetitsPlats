@@ -71,6 +71,7 @@
           </div>
           <div id="main-ingredient" class="dropdown-main button-filter-blue">
             <input
+              id="searchIngredient"
               placeholder="Rechercher un ingrédient"
               class="dropdown-menu-searchbar button-filter-blue"
               type="text"
@@ -94,7 +95,8 @@
           </div>
           <div id="main-apparel" class="dropdown-main button-filter-green">
             <input
-              placeholder="Rechercher un ingrédient"
+              id="searchApparel"
+              placeholder="Rechercher un appareil"
               class="dropdown-menu-searchbar button-filter-green"
               type="text"
             />
@@ -117,7 +119,8 @@
           </div>
           <div id="main-ustensil" class="dropdown-main button-filter-red">
             <input
-              placeholder="Rechercher un ingrédient"
+              id="searchUstensil"
+              placeholder="Rechercher un ustensile"
               class="dropdown-menu-searchbar button-filter-red"
               type="text"
             />
@@ -136,10 +139,14 @@
     </main>
     <footer></footer>
     <!-- JS -->
+    <!-- Data -->
     <script src="./data/recipes.js"></script>
+    <!-- Factory -->
     <script src="javascript/factory/recipeCard.js"></script>
     <script src="javascript/factory/filterList.js"></script>
+    <!-- Page -->
     <script src="javascript/pages/index.js"></script>
+    <!-- Utils -->
     <script src="javascript/utils/dropdown.js"></script>
     <script src="javascript/utils/tag.js"></script>
   </body>
