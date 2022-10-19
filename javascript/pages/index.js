@@ -113,6 +113,9 @@ function searchRecipe() {
       .normalize("NFD")
       .replace(/[\u0300-\u036f]/g, "");
 
+    // search.length >= 3
+    if (search.length >= 3) {
+    }
     if (
       textTitle.includes(search) ||
       textDsc.includes(search) ||
