@@ -84,7 +84,9 @@ UstensilsArray.forEach((element) => {
 
 // === Barre principale (recettes) ===
 
-// === Dropdown - recherche ingrédient ===
+// === Dropdown Searchbar (ingredients) ===
+// const newText = text.charAt(0).toUpperCase() + text.slice(1); // If have to capitalise first letter
+
 function searchIngredient() {
   // get input value
   const searchBar = document.getElementById("searchIngredient");
@@ -97,11 +99,11 @@ function searchIngredient() {
   // Check if mach for all items => hide those who don't match
   liArray.forEach((element) => {
     const text = element.innerText.toLocaleLowerCase();
-    // const newText = text.charAt(0).toUpperCase() + text.slice(1); // Capitalise first letter like in HTML
-
-    if (text.includes(search)) {
+    const textSimple = text.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    if (text.includes(search) || textSimple.includes(search)) {
       // reshow it after hide it
       element.style.display = "";
+      //   console.log(text);
     } else {
       // hide it
       element.style.display = "none";
@@ -115,7 +117,7 @@ ingredientSearchBar.addEventListener("input", (e) => {
   searchIngredient();
 });
 
-// === Dropdown - recherche appareil ===
+// === Dropdown Searchbar (appareil) ===
 function searchApparel() {
   // get input value
   const searchBar = document.getElementById("searchApparel");
@@ -128,9 +130,8 @@ function searchApparel() {
   // Check if mach for all items => hide those who don't match
   liArray.forEach((element) => {
     const text = element.innerText.toLocaleLowerCase();
-    // const newText = text.charAt(0).toUpperCase() + text.slice(1); // Capitalise first letter like in HTML
-
-    if (text.includes(search)) {
+    const textSimple = text.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    if (text.includes(search) || textSimple.includes(search)) {
       // reshow it after hide it
       element.style.display = "";
     } else {
@@ -146,7 +147,7 @@ apparelSearchBar.addEventListener("input", (e) => {
   searchApparel();
 });
 
-// === Dropdown - recherche ustensil ===
+// === Dropdown Searchbar (ustensil) ===
 function searchUstensil() {
   // get input value
   const searchBar = document.getElementById("searchUstensil");
@@ -159,9 +160,8 @@ function searchUstensil() {
   // Check if mach for all items => hide those who don't match
   liArray.forEach((element) => {
     const text = element.innerText.toLocaleLowerCase();
-    // const newText = text.charAt(0).toUpperCase() + text.slice(1); // Capitalise first letter like in HTML
-
-    if (text.includes(search)) {
+    const textSimple = text.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    if (text.includes(search) || textSimple.includes(search)) {
       // reshow it after hide it
       element.style.display = "";
     } else {
@@ -180,8 +180,4 @@ ustensilSearchBar.addEventListener("input", (e) => {
 //
 // ====== Fonctionnalités des Tags (filtres)  ======
 
-// === Recherche dans la barre de principale ===
-// const apparel = recipes.filter((element) => element.appliance == "Saladier");
-// console.log(apparel);
-
-// === TAG - Eventlistener sur tag existant ? ===
+// === TAG - Eventlistener tag existant ? ===
