@@ -83,6 +83,57 @@ UstensilsArray.forEach((element) => {
 // ====== Fonctionnalités de Recherche ======
 
 // === Barre principale (recettes) ===
+function searchRecipe() {
+  // get input value
+  const searchBar = document.getElementById("mainSearchBar");
+  const search = searchBar.value.toLowerCase();
+  // const for loop
+  const divSection = document.querySelector(".section-recipes");
+  const recipe = divSection.querySelectorAll(".card-recipes");
+  const recipeArray = Array.from(recipe);
+
+  // Check if mach for all items => hide those who don't match
+  recipeArray.forEach((element) => {
+    // const text = element.innerText.toLocaleLowerCase(); // Tout le text de l'élément
+
+    // Titre
+    const textTitle = element
+      .querySelector(".card-recipes-txt-top-left")
+      .innerText.toLocaleLowerCase();
+    // Title sans accent
+    const textTitleSimple = textTitle
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "");
+    // Description
+    const textDsc = element
+      .querySelector(".card-recipes-txt-bottom-right")
+      .innerText.toLocaleLowerCase();
+    // Description sans accent
+    const textDscSimple = textDsc
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "");
+
+    if (
+      textTitle.includes(search) ||
+      textDsc.includes(search) ||
+      textTitleSimple.includes(search) ||
+      textDscSimple.includes(search)
+    ) {
+      // reshow it after hide it
+      element.style.display = "";
+      //   console.log(text);
+    } else {
+      // hide it
+      element.style.display = "none";
+    }
+  });
+}
+
+const mainSearchBar = document.getElementById("mainSearchBar");
+// Change on Input
+mainSearchBar.addEventListener("input", (e) => {
+  searchRecipe();
+});
 
 // === Dropdown Searchbar (ingredients) ===
 // const newText = text.charAt(0).toUpperCase() + text.slice(1); // If have to capitalise first letter
