@@ -132,18 +132,8 @@ function searchRecipe() {
       }
     }
     if (search.length < 3) {
-      if (
-        textTitle.includes(search) ||
-        textDsc.includes(search) ||
-        textTitleSimple.includes(search) ||
-        textDscSimple.includes(search)
-      ) {
-        // reshow it after hide it
-        element.style.display = "";
-        //   console.log(text);
-      } else {
-        // dont hide it cause search.lengh < 3
-      }
+      // reshow all after hide it
+      element.style.display = "";
     }
   });
 }
