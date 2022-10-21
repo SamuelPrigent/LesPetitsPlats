@@ -82,7 +82,7 @@ UstensilsArray.forEach((element) => {
 //
 // ====== Fonctionnalités de Recherche ======
 
-// === Barre principale (recettes) ===
+// === Barre principale (Recettes) ===
 function searchRecipe() {
   // get input value
   const searchBar = document.getElementById("mainSearchBar");
@@ -240,4 +240,4 @@ ustensilSearchBar.addEventListener("input", (e) => {
 //
 // ====== Fonctionnalités des Tags (filtres)  ======
 
-// === TAG - Eventlistener tag existant ? ===
+// === TAG - recup listes des tag ajoutés pour chaque élément rajouter une contrainte ? ===
