@@ -82,7 +82,7 @@ UstensilsArray.forEach((element) => {
 //
 // ====== Fonctionnalités de Recherche ======
 
-// === Barre principale (Recettes) ===
+// === Recherche Barre principale [recipes] ===
 function searchRecipe() {
   // get input value
   const searchBar = document.getElementById("mainSearchBar");
@@ -92,12 +92,8 @@ function searchRecipe() {
   const recipe = divSection.querySelectorAll(".card-recipes");
   const recipeArray = Array.from(recipe);
 
-  // Check if mach for all items => hide those who don't match
+  // Show item who include "search" hide other
   recipeArray.forEach((element) => {
-    // Selection si l'on voudrait chercher aussi dans les ingrédients et la quantité
-    // const text = element.innerText.toLocaleLowerCase();
-    // const textSimple = text.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-
     // Titre
     const textTitle = element
       .querySelector(".card-recipes-txt-top-left")
@@ -144,100 +140,47 @@ mainSearchBar.addEventListener("input", (e) => {
   searchRecipe();
 });
 
-// === Dropdown Searchbar (ingredients) ===
-// const newText = text.charAt(0).toUpperCase() + text.slice(1); // If have to capitalise first letter
+//
+// === Search One Tag in Dropdown ===
 
-function searchIngredient() {
-  // get input value
-  const searchBar = document.getElementById("searchIngredient");
-  const search = searchBar.value.toLowerCase();
-  // const for loop
-  const ul = document.getElementById("section-ingredient");
-  const li = ul.getElementsByTagName("li");
-  const liArray = Array.from(li);
+function searchOneTag() {
+  const dropdownsElement = document.querySelectorAll(".dropdown"); // récupère les 3 dropdown
 
-  // Check if mach for all items => hide those who don't match
-  liArray.forEach((element) => {
-    const text = element.innerText.toLocaleLowerCase();
-    const textSimple = text.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-    if (text.includes(search) || textSimple.includes(search)) {
-      // reshow it after hide it
-      element.style.display = "";
-      //   console.log(text);
-    } else {
-      // hide it
-      element.style.display = "none";
-    }
+  // for each dropdown
+  dropdownsElement.forEach((dropdown) => {
+    // get input value
+    const searchBar = dropdown.querySelector(".dropdown-searchBar"); // class name
+    const search = searchBar.value.toLowerCase();
+    // const for loop
+    const ul = dropdown.querySelector(".dropdown-menu");
+    const li = ul.getElementsByTagName("li");
+    const liArray = Array.from(li);
+
+    // Check if mach for all items => hide those who don't match
+    liArray.forEach((element) => {
+      const text = element.innerText.toLocaleLowerCase();
+      const textSimple = text.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+      if (text.includes(search) || textSimple.includes(search)) {
+        // reshow it after hide it
+        element.style.display = "";
+      } else {
+        // hide it
+        element.style.display = "none";
+      }
+    });
   });
 }
 
-const ingredientSearchBar = document.getElementById("searchIngredient");
-// Change on Input
-ingredientSearchBar.addEventListener("input", (e) => {
-  searchIngredient();
-});
+// Listen input change for each Search Bar
+const AllSearchBar = document.querySelectorAll(".dropdown-searchBar");
 
-// === Dropdown Searchbar (appareil) ===
-function searchApparel() {
-  // get input value
-  const searchBar = document.getElementById("searchApparel");
-  const search = searchBar.value.toLowerCase();
-  // const for loop
-  const ul = document.getElementById("section-apparel");
-  const li = ul.getElementsByTagName("li");
-  const liArray = Array.from(li);
-
-  // Check if mach for all items => hide those who don't match
-  liArray.forEach((element) => {
-    const text = element.innerText.toLocaleLowerCase();
-    const textSimple = text.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-    if (text.includes(search) || textSimple.includes(search)) {
-      // reshow it after hide it
-      element.style.display = "";
-    } else {
-      // hide it
-      element.style.display = "none";
-    }
+AllSearchBar.forEach((element) => {
+  element.addEventListener("input", (e) => {
+    searchOneTag();
   });
-}
-
-const apparelSearchBar = document.getElementById("searchApparel");
-// Change on Input
-apparelSearchBar.addEventListener("input", (e) => {
-  searchApparel();
-});
-
-// === Dropdown Searchbar (ustensil) ===
-function searchUstensil() {
-  // get input value
-  const searchBar = document.getElementById("searchUstensil");
-  const search = searchBar.value.toLowerCase();
-  // const for loop
-  const ul = document.getElementById("section-ustensil");
-  const li = ul.getElementsByTagName("li");
-  const liArray = Array.from(li);
-
-  // Check if mach for all items => hide those who don't match
-  liArray.forEach((element) => {
-    const text = element.innerText.toLocaleLowerCase();
-    const textSimple = text.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-    if (text.includes(search) || textSimple.includes(search)) {
-      // reshow it after hide it
-      element.style.display = "";
-    } else {
-      // hide it
-      element.style.display = "none";
-    }
-  });
-}
-
-const ustensilSearchBar = document.getElementById("searchUstensil");
-// Change on Input
-ustensilSearchBar.addEventListener("input", (e) => {
-  searchUstensil();
 });
 
 //
-// ====== Fonctionnalités des Tags (filtres)  ======
+// ====== Fonctionnalités des Tags (filtres) ??  ======
 
-// === TAG - recup listes des tag ajoutés pour chaque élément rajouter une contrainte ? ===
+// == ici ou dans la section TAG ? == //

@@ -54,8 +54,9 @@ dropdowns.forEach((dropdown) => {
     searchText.classList.toggle("dropdown-selected-invisible");
     searchInput.classList.toggle("dropdown-searchBar-visible");
     select.classList.toggle("dropdown-borderRadius");
-    searchInput.focus();
-    searchInput.value = "";
+    searchInput.focus(); // focus input
+    searchInput.value = ""; // clean input value
+    searchOneTag(); // refresh
 
     // Toggle menu visibility
     main.classList.toggle("dropdown-main-open");
@@ -93,17 +94,6 @@ dropdowns.forEach((dropdown) => {
       searchInputUstensil.classList.remove("dropdown-searchBar-visible"); // hide input
       selectUstensil.classList.remove("dropdown-borderRadius"); // reset border radius
       dropdownUstensil.classList.remove("dropdown-open");
-    }
-
-    // Focus search bar and Clean
-    if (menu == ingredientFilterList) {
-      searchIngredient();
-    }
-    if (menu == apparelFilterList) {
-      searchApparel();
-    }
-    if (menu == ustensilFilterList) {
-      searchUstensil();
     }
   });
 
