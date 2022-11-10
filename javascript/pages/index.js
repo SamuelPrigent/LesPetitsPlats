@@ -43,9 +43,9 @@ const newApparelListLowercase = newApparelListWithoutUndefined.map(
   }
 );
 const ApparelList = new Set(newApparelListLowercase); // Remove Double
-const ApparelArray = Array.from(ApparelList);
-ApparelArray.sort((a, b) => (a > b ? 1 : -1));
-// console.log(ApparelArray);
+const ApparelsArray = Array.from(ApparelList);
+ApparelsArray.sort((a, b) => (a > b ? 1 : -1));
+// console.log(ApparelsArray);
 
 // === Listes des ustensils [22] ===
 const UstensilsCombinaison = recipes.map((e) => e.ustensils);
@@ -68,7 +68,7 @@ IngredientsArray.forEach((element) => {
 });
 
 // Create Apparel List
-ApparelArray.forEach((element) => {
+ApparelsArray.forEach((element) => {
   const newFilter = getApparelFilter(element);
   apparelSection.appendChild(newFilter);
 });
@@ -82,11 +82,9 @@ UstensilsArray.forEach((element) => {
 //
 // ====== Fonctionnalités de Recherche ======
 
-// === Recherche Barre principale [recipes] ===
-function searchRecipe() {
-  // get input value
-  const searchBar = document.getElementById("mainSearchBar");
-  const search = searchBar.value.toLowerCase();
+// === Search in Recipe In Title And Description ===
+
+function searchRecipeTitleDescription(searchValue) {
   // const for loop
   const divSection = document.querySelector(".section-recipes");
   const recipe = divSection.querySelectorAll(".card-recipes");
@@ -111,13 +109,13 @@ function searchRecipe() {
       .normalize("NFD")
       .replace(/[\u0300-\u036f]/g, "");
 
-    // search.length >= 3
-    if (search.length >= 3) {
+    // search.length >= 3 // fonctionne aussi pour les tag
+    if (searchValue.length >= 3) {
       if (
-        textTitle.includes(search) ||
-        textDsc.includes(search) ||
-        textTitleSimple.includes(search) ||
-        textDscSimple.includes(search)
+        textTitle.includes(searchValue) ||
+        textDsc.includes(searchValue) ||
+        textTitleSimple.includes(searchValue) ||
+        textDscSimple.includes(searchValue)
       ) {
         // reshow it after hide it
         element.style.display = "";
@@ -127,23 +125,32 @@ function searchRecipe() {
         element.style.display = "none";
       }
     }
-    if (search.length < 3) {
+    if (searchValue.length < 3) {
       // reshow all after hide it
       element.style.display = "";
     }
   });
 }
 
+// === Recherche Barre principale [recipes] ===
+function searchRecipeWithMainSearchbar() {
+  // get input value
+  const searchBar = document.getElementById("mainSearchBar");
+  const search = searchBar.value.toLowerCase();
+  searchRecipeTitleDescription(search);
+}
+
+// Input change call the Search
 const mainSearchBar = document.getElementById("mainSearchBar");
 // Change on Input
 mainSearchBar.addEventListener("input", (e) => {
-  searchRecipe();
+  searchRecipeWithMainSearchbar();
 });
 
 //
-// === Search One Tag in Dropdown ===
+// === Search One Filter in Dropdown (=> Create Tag) ===
 
-function searchOneTag() {
+function searchOneFilter() {
   const dropdownsElement = document.querySelectorAll(".dropdown"); // récupère les 3 dropdown
 
   // for each dropdown
@@ -176,11 +183,197 @@ const AllSearchBar = document.querySelectorAll(".dropdown-searchBar");
 
 AllSearchBar.forEach((element) => {
   element.addEventListener("input", (e) => {
-    searchOneTag();
+    searchOneFilter();
   });
 });
 
 //
-// ====== Fonctionnalités des Tags (filtres) ??  ======
+// ===== Actions des filtres ======
 
-// == ici ou dans la section TAG ? == //
+// === Filter Recipes with Ingredients Tag ===
+
+function searchRecipeWithTag(tagName, tagType) {
+  // get card elements for loop in
+  const divSection = document.querySelector(".section-recipes");
+  const recipesCard = divSection.querySelectorAll(".card-recipes");
+  const recipeArray = Array.from(recipesCard);
+
+  // Initialiser un array
+  const TagSearchResultElement = [];
+
+  // Hide/Show Tag + Create an array of [elements] w/ those who mach
+  recipeArray.forEach((element) => {
+    //
+    // for Ingredient Tag
+    if (tagType == "ingredient") {
+      const textIngredient = element
+        .querySelector(".card-recipes-txt-bottom-left")
+        .innerText.toLocaleLowerCase();
+      const textIngredientSimple = textIngredient
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+
+      if (
+        textIngredient.includes(tagName) ||
+        textIngredientSimple.includes(tagName)
+      ) {
+        // reshow it after hide it
+        element.style.display = "";
+        // Create Array with Element who match
+        TagSearchResultElement.push(element);
+      } else {
+        // hide it
+        element.style.display = "none";
+      }
+    }
+
+    // for Apparel Tag
+    if (tagType == "apparel") {
+      if (element.dataset.apparellist) {
+        const textApparel = element.dataset.apparellist.toLowerCase();
+        const textApparelSimple = textApparel
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "");
+
+        if (
+          textApparel.includes(tagName) ||
+          textApparelSimple.includes(tagName)
+        ) {
+          // reshow it after hide it
+          element.style.display = "";
+          // Create Array with Element who match
+          TagSearchResultElement.push(element);
+        } else {
+          // hide it
+          element.style.display = "none";
+        }
+      } else {
+        // hide it
+        element.style.display = "none";
+      }
+    }
+
+    // // for Ustensil Tag
+    if (tagType == "ustensil") {
+      if (element.dataset.ustensillist) {
+        const textUstensil = element.dataset.ustensillist.toLowerCase();
+        const textUstensilSimple = textUstensil
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "");
+
+        if (
+          textUstensil.includes(tagName) ||
+          textUstensilSimple.includes(tagName)
+        ) {
+          // reshow it after hide it
+          element.style.display = "";
+          // Create Array with Element who match
+          TagSearchResultElement.push(element);
+        } else {
+          // hide it
+          element.style.display = "none";
+        }
+      } else {
+        // hide it
+        element.style.display = "none";
+      }
+    }
+  });
+
+  return TagSearchResultElement;
+}
+
+// ===== Recherche dans le tableau de la précédente recherche =====
+function searchRecipeWithPreviousTagResults(
+  previousTagSearchResult,
+  tagName,
+  tagType
+) {
+  // previous Search (Element)
+  const IngredientSearchResultElement = previousTagSearchResult;
+  // console.log(IngredientSearchResultElement);
+
+  // Initialiser un array
+  const TagSearchResultElement = [];
+
+  // Hide/Show Tag + Create an array of [elements] w/ those who mach
+  IngredientSearchResultElement.forEach((element) => {
+    //
+    // for Ingredient Tag
+    if (tagType == "ingredient") {
+      const textIngredient = element
+        .querySelector(".card-recipes-txt-bottom-left")
+        .innerText.toLocaleLowerCase();
+      const textIngredientSimple = textIngredient
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+
+      if (
+        textIngredient.includes(tagName) ||
+        textIngredientSimple.includes(tagName)
+      ) {
+        // reshow it after hide it
+        element.style.display = "";
+        // Create Array with Element who match
+        TagSearchResultElement.push(element);
+      } else {
+        // hide it
+        element.style.display = "none";
+      }
+    }
+
+    // for Apparel Tag
+    if (tagType == "apparel") {
+      if (element.dataset.apparellist) {
+        const textApparel = element.dataset.apparellist.toLowerCase();
+        const textApparelSimple = textApparel
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "");
+
+        if (
+          textApparel.includes(tagName) ||
+          textApparelSimple.includes(tagName)
+        ) {
+          // reshow it after hide it
+          element.style.display = "";
+          // Create Array with Element who match
+          TagSearchResultElement.push(element);
+        } else {
+          // hide it
+          element.style.display = "none";
+        }
+      } else {
+        // hide it
+        element.style.display = "none";
+      }
+    }
+
+    // // for Ustensil Tag
+    if (tagType == "ustensil") {
+      if (element.dataset.ustensillist) {
+        const textUstensil = element.dataset.ustensillist.toLowerCase();
+        const textUstensilSimple = textUstensil
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "");
+
+        if (
+          textUstensil.includes(tagName) ||
+          textUstensilSimple.includes(tagName)
+        ) {
+          // reshow it after hide it
+          element.style.display = "";
+          // Create Array with Element who match
+          TagSearchResultElement.push(element);
+        } else {
+          // hide it
+          element.style.display = "none";
+        }
+      } else {
+        // hide it
+        element.style.display = "none";
+      }
+    }
+  });
+
+  return TagSearchResultElement;
+}

@@ -56,7 +56,7 @@ dropdowns.forEach((dropdown) => {
     select.classList.toggle("dropdown-borderRadius");
     searchInput.focus(); // focus input
     searchInput.value = ""; // clean input value
-    searchOneTag(); // refresh
+    searchOneFilter(); // refresh
 
     // Toggle menu visibility
     main.classList.toggle("dropdown-main-open");

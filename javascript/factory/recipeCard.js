@@ -80,6 +80,14 @@ function getRecipeCard(data) {
   textBottomRight.classList.add("card-recipes-txt-bottom-right");
   textBottomRight.innerText = data.description;
 
+  // data Attribute
+  if (data.appliance) {
+    article.setAttribute("data-apparellist", data.appliance);
+  }
+  if (data.ustensils) {
+    article.setAttribute("data-ustensillist", data.ustensils);
+  }
+
   // article
   article.appendChild(imgDiv);
   article.appendChild(textDiv);

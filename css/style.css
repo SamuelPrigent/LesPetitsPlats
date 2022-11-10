@@ -380,6 +380,26 @@ header {
   gap: 47px;
 }
 
+.section-recipes-error {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  padding: 0px 30px;
+  font-size: 18px;
+  color: #a0a0a0;
+  background-color: #eeeeee;
+  height: 120px;
+  border-radius: 3px;
+  width: auto;
+  user-select: none;
+  gap: 12px;
+}
+
+.section-recipes-error-svg {
+  height: 40px;
+}
+
 @media screen and (max-width: 1200px) {
   .section-recipes {
     grid-template-columns: 1fr 1fr;

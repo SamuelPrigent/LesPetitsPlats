@@ -9,9 +9,8 @@ ingredientFilter.forEach((element) => {
     const filterText = element.innerText;
     // Add Tag in HTML
     createTag(filterText, "ingredient");
-    // Get New Tag Array
-    getTagsList();
     // Search Recipe with Tag Array
+    searchRecipeWithAllTags();
   });
 });
 
@@ -22,8 +21,8 @@ apparelFilter.forEach((element) => {
     const filterText = element.innerText;
     // Add Tag in HTML
     createTag(filterText, "apparel");
-    // Get New Tag Array
-    getTagsList();
+    // Search Recipe with Tag Array
+    searchRecipeWithAllTags(); // Ne cherche pas au bon endroit (in element)
   });
 });
 
@@ -34,12 +33,12 @@ ustensilFilter.forEach((element) => {
     const filterText = element.innerText;
     // Add Tag in HTML
     createTag(filterText, "ustensil");
-    // Get New Tag Array
-    getTagsList();
+    // Search Recipe with Tag Array
+    searchRecipeWithAllTags(); // Ne cherche pas au bon endroit (in element)
   });
 });
 
-// ===== CreateTag =====
+// ===== CreateTag ===== //
 
 // Create Tag (html / css)
 function createTag(tagName, type) {
@@ -91,44 +90,108 @@ function createTag(tagName, type) {
   // Remove it when click on Cross
   tagSvg.addEventListener("click", () => {
     tag.remove();
+    searchRecipeWithAllTags(); // ça devrait marcher ?
   });
 }
 
-// ===== Create Tag Lists =====
+// ===== Get Tag [List] ===== //
 
 function getTagsList() {
-  // All array
-  const IngredientsArray = [];
-  const ApparelsArray = [];
-  const UstensilsArray = [];
-  // Ingredients
+  const TagsArray = [];
+
+  // Add Ingredients Tags
   const IngredientTags = document.querySelector(".section-tag-ingredient");
   const allIngredientsTags = IngredientTags.querySelectorAll(".tagFilter");
   allIngredientsTags.forEach((tag) => {
-    const tagFilterTxt = tag.querySelector(".tagFilter-txt");
-    IngredientsArray.push(tagFilterTxt.innerText);
+    const tagElement = tag.querySelector(".tagFilter-txt");
+    const tagObject = {
+      name: tagElement.innerText.toLowerCase(),
+      type: "ingredient",
+    }; // create object
+    TagsArray.push(tagObject); // push in TagsArray
   });
-  // Apparels
+  // Add Apparels Tags
   const ApparelsTags = document.querySelector(".section-tag-apparel");
   const allApparelsTags = ApparelsTags.querySelectorAll(".tagFilter");
   allApparelsTags.forEach((tag) => {
-    const tagFilterTxt = tag.querySelector(".tagFilter-txt");
-    ApparelsArray.push(tagFilterTxt.innerText);
+    const tagElement = tag.querySelector(".tagFilter-txt");
+    const tagObject = {
+      name: tagElement.innerText.toLowerCase(),
+      type: "apparel",
+    }; // create object
+    TagsArray.push(tagObject); // push in TagsArray
   });
-  // Ustensils
+  // Add Ustensils Tags
   const UstensilTags = document.querySelector(".section-tag-ustensil");
   const allUstensilsTags = UstensilTags.querySelectorAll(".tagFilter");
   allUstensilsTags.forEach((tag) => {
-    const tagFilterTxt = tag.querySelector(".tagFilter-txt");
-    UstensilsArray.push(tagFilterTxt.innerText);
+    const tagElement = tag.querySelector(".tagFilter-txt");
+    const tagObject = {
+      name: tagElement.innerText.toLowerCase(),
+      type: "ustensil",
+    }; // create object
+    TagsArray.push(tagObject); // push in TagsArray
   });
 
-  console.clear();
-  console.log(IngredientsArray);
-  console.log(ApparelsArray);
-  console.log(UstensilsArray);
+  // console.clear();
+  // console.log(TagsArray);
 
-  return { IngredientsArray, ApparelsArray, UstensilsArray };
+  return TagsArray;
 }
 
 // ===== Filter Recipes with Tag Array =====
+
+// for loop in (searchRecipeWithTag)
+let previousTag = "";
+
+// Déclenché a l'ajout d'un Tag
+function searchRecipeWithAllTags() {
+  const TagsArray = getTagsList();
+  //
+  console.clear();
+  console.log("Tags Array", TagsArray);
+
+  // L'ajout de tag reset cette valeur
+  let previousTagSearch = "";
+
+  for (let i = 0; i < TagsArray.length; i++) {
+    const tagName = TagsArray[i].name.toLowerCase();
+    const tagType = TagsArray[i].type;
+
+    if (i == 0) {
+      // Stock les résultats
+      previousTagSearch = searchRecipeWithTag(tagName, tagType);
+      // Toogle Msg if no result
+      const errorMsg = document.querySelector(".section-recipes-error");
+      if (previousTagSearch == "") {
+        errorMsg.style.display = "flex";
+      } else {
+        errorMsg.style.display = "none";
+      }
+
+      // console
+      console.log("/// i=" + i);
+      console.log("Search Result", previousTagSearch);
+    }
+    if (i >= 1) {
+      // Recherche + stock les résultats pour la prochaine boucle
+      previousTagSearch = searchRecipeWithPreviousTagResults(
+        previousTagSearch,
+        tagName,
+        tagType
+      );
+      // Toogle Msg if no result
+      const errorMsg = document.querySelector(".section-recipes-error");
+      if (previousTagSearch == "") {
+        errorMsg.style.display = "flex";
+      } else {
+        errorMsg.style.display = "none";
+      }
+
+      // console
+      console.log("/// i=" + i);
+      console.log("New Result", previousTagSearch);
+      // console.log(`Search ${tagName} (i) in ${TagsArray[i - 1].name} (i-1) `);
+    }
+  }
+}

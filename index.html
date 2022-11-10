@@ -108,7 +108,13 @@
         </div>
         <!-- Fin -->
         <!-- Dropdown Ustensiles -->
-        <div id="dropdown-ustensil" tabindex="0" class="dropdown">
+        <!-- TEST DATA -->
+        <div
+          data-ustensilList="couteau, fourchette, bol"
+          id="dropdown-ustensil"
+          tabindex="0"
+          class="dropdown"
+        >
           <div id="selectUstensil" class="dropdown-select button-filter-red">
             <div class="dropdown-selected">
               <div id="searchUstensilText" class="dropdown-text">
@@ -139,6 +145,11 @@
 
       <div class="section-recipes">
         <!-- Recipes Card Created Here ... -->
+      </div>
+      <div class="section-recipes-error">
+        <!-- Error msg here ... -->
+        Aucune recette correspondante à la recherche
+        <img class="section-recipes-error-svg" src="assets/NoData.svg" />
       </div>
     </main>
     <footer></footer>

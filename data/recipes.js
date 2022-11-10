@@ -31,7 +31,7 @@ const recipes = [
     description:
       "Mettre les glaçons à votre goût dans le blender, ajouter le lait, la crème de coco, le jus de 2 citrons et le sucre. Mixer jusqu'à avoir la consistence désirée",
     appliance: "Blender",
-    ustensils: ["cuillère à Soupe", "verres", "presse citron"],
+    ustensils: ["cuillère à soupe", "verres", "presse citron"],
   },
   {
     id: 2,
@@ -302,7 +302,7 @@ const recipes = [
     time: 60,
     description:
       "Hachez les noix grossièrement. Faire fondre le chocolat avec le beurre. Mélanger les oeufs et le sucre et mélanger au chocolat. Ajouter la farine. Mélanger afin d'avoir quelque chose d'homogène puis incorporer les noix. Verser la préparation dans un moule de préférence rectangulaire. Cuire 2O à 25 minutes à 180°. Sortez du four et attendez quelques minutes pour démouler. Servir avec une boule de glace pour plus de gourmandise.",
-    appliance: ["Four", "casserole"],
+    appliance: ["Four"],
     ustensils: ["moule à gateaux"],
   },
   {
@@ -1157,7 +1157,7 @@ const recipes = [
     description:
       "Beurrer les tranches de pain, ajouter entre 2 tranches de pain de mie 1 tranche d’emmental, une de blanc de dinde, et une autre d'emmental. Dans un récipient, mélanger le gruyère rappé avec le lait et la noix de muscade. Mettre sur les croque monsieur. Placer au four durant 10 minutes.",
     appliance: "Four",
-    ustensils: ["râpe à fromage", "cuillère à Soupe", "couteau"],
+    ustensils: ["râpe à fromage", "cuillère à soupe", "couteau"],
   },
   {
     id: 33,
@@ -1373,7 +1373,7 @@ const recipes = [
     description:
       "Fouettez les oeufs, le sucre et le lait. tremper les tranches de pain. Le cuire au four pendant environ 10 minutes à 180°. Servir",
     appliance: "Four",
-    ustensils: ["fouet", "bol", "Cuillère à Soupe"],
+    ustensils: ["fouet", "bol", "cuillère à soupe"],
   },
   {
     id: 39,
