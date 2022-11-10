@@ -21,22 +21,8 @@ function searchRecipeWithAllTags() {
     const errorMsg = document.querySelector(".section-recipes-error");
 
     if (i == 0) {
-      // TEST TEST TEST TEST (boucle infini)
-
       // check if mainBarSearch exist
-      // comment appeller ça boucle infini ?
-      //   const mainBarSearch = searchRecipeWithMainBar();
-      //   if (mainBarSearch != "") {
-      //     previousTagSearch = searchRecipeWithPreviousResults(
-      //       mainBarSearch,
-      //       searchValue,
-      //       searchType
-      //     );
-      //   } else {
-      //     previousTagSearch = searchRecipe(searchValue, searchType);
-      //   }
-
-      // END TEST END TEST END
+      // Cette logique ne pourrait pas fonctionner car => boucle infini
 
       // Stock les résultats
       previousTagSearch = searchRecipe(searchValue, searchType);
@@ -83,7 +69,7 @@ function searchRecipeWithMainBar() {
   // get input value
   const searchBar = document.getElementById("mainSearchBar");
   const searchValue = searchBar.value.toLowerCase();
-  const tagSearch = searchRecipeWithAllTags(); // call tagSearch sans conditions ? Boucle infini ??
+  const tagSearch = searchRecipeWithAllTags(); // Boucle infini ? si pareil autre côté ?
   const errorMsg = document.querySelector(".section-recipes-error");
 
   // if pas de recherche via tag

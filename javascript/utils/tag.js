@@ -12,7 +12,8 @@ ingredientFilter.forEach((element) => {
     // Search Recipe with Tag Array
     searchRecipeWithAllTags();
     // Search Recipe with Main Bar After (pas de boucle infini)
-    searchRecipeWithMainBar();
+    // Mais écrase la recherche faite par la boucle des tags
+    // searchRecipeWithMainBar();
   });
 });
 
@@ -26,7 +27,8 @@ apparelFilter.forEach((element) => {
     // Search Recipe with Tag Array
     searchRecipeWithAllTags();
     // Search Recipe with Main Bar After (pas de boucle infini)
-    searchRecipeWithMainBar();
+    // Mais écrase la recherche faite par la boucle des tags
+    // searchRecipeWithMainBar();
   });
 });
 
@@ -40,7 +42,8 @@ ustensilFilter.forEach((element) => {
     // Search Recipe with Tag Array
     searchRecipeWithAllTags();
     // Search Recipe with Main Bar After (pas de boucle infini)
-    searchRecipeWithMainBar();
+    // Mais écrase la recherche faite par la boucle des tags
+    // searchRecipeWithMainBar();
   });
 });
 
