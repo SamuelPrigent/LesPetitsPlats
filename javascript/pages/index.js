@@ -82,71 +82,6 @@ UstensilsArray.forEach((element) => {
 //
 // ====== Fonctionnalités de Recherche ======
 
-// === Search in Recipe In Title And Description ===
-
-function searchRecipeTitleDescription(searchValue) {
-  // const for loop
-  const divSection = document.querySelector(".section-recipes");
-  const recipe = divSection.querySelectorAll(".card-recipes");
-  const recipeArray = Array.from(recipe);
-
-  // Show item who include "search" hide other
-  recipeArray.forEach((element) => {
-    // Titre
-    const textTitle = element
-      .querySelector(".card-recipes-txt-top-left")
-      .innerText.toLocaleLowerCase();
-    // Title sans accent
-    const textTitleSimple = textTitle
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "");
-    // Description
-    const textDsc = element
-      .querySelector(".card-recipes-txt-bottom-right")
-      .innerText.toLocaleLowerCase();
-    // Description sans accent
-    const textDscSimple = textDsc
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "");
-
-    // search.length >= 3 // fonctionne aussi pour les tag
-    if (searchValue.length >= 3) {
-      if (
-        textTitle.includes(searchValue) ||
-        textDsc.includes(searchValue) ||
-        textTitleSimple.includes(searchValue) ||
-        textDscSimple.includes(searchValue)
-      ) {
-        // reshow it after hide it
-        element.style.display = "";
-        //   console.log(text);
-      } else {
-        // hide it
-        element.style.display = "none";
-      }
-    }
-    if (searchValue.length < 3) {
-      // reshow all after hide it
-      element.style.display = "";
-    }
-  });
-}
-
-// === Recherche Barre principale [recipes] ===
-function searchRecipeWithMainSearchbar() {
-  // get input value
-  const searchBar = document.getElementById("mainSearchBar");
-  const search = searchBar.value.toLowerCase();
-  searchRecipeTitleDescription(search);
-}
-
-// Input change call the Search
-const mainSearchBar = document.getElementById("mainSearchBar");
-// Change on Input
-mainSearchBar.addEventListener("input", (e) => {
-  searchRecipeWithMainSearchbar();
-});
-
 //
 // === Search One Filter in Dropdown (=> Create Tag) ===
 
@@ -188,11 +123,11 @@ AllSearchBar.forEach((element) => {
 });
 
 //
-// ===== Actions des filtres ======
+// ===== Actions de Recherche par Type ======
 
-// === Filter Recipes with Ingredients Tag ===
+// === Première Recherche ===
 
-function searchRecipeWithTag(tagName, tagType) {
+function searchRecipe(searchValue, searchType) {
   // get card elements for loop in
   const divSection = document.querySelector(".section-recipes");
   const recipesCard = divSection.querySelectorAll(".card-recipes");
@@ -205,7 +140,7 @@ function searchRecipeWithTag(tagName, tagType) {
   recipeArray.forEach((element) => {
     //
     // for Ingredient Tag
-    if (tagType == "ingredient") {
+    if (searchType == "ingredient") {
       const textIngredient = element
         .querySelector(".card-recipes-txt-bottom-left")
         .innerText.toLocaleLowerCase();
@@ -214,8 +149,8 @@ function searchRecipeWithTag(tagName, tagType) {
         .replace(/[\u0300-\u036f]/g, "");
 
       if (
-        textIngredient.includes(tagName) ||
-        textIngredientSimple.includes(tagName)
+        textIngredient.includes(searchValue) ||
+        textIngredientSimple.includes(searchValue)
       ) {
         // reshow it after hide it
         element.style.display = "";
@@ -228,7 +163,7 @@ function searchRecipeWithTag(tagName, tagType) {
     }
 
     // for Apparel Tag
-    if (tagType == "apparel") {
+    if (searchType == "apparel") {
       if (element.dataset.apparellist) {
         const textApparel = element.dataset.apparellist.toLowerCase();
         const textApparelSimple = textApparel
@@ -236,8 +171,8 @@ function searchRecipeWithTag(tagName, tagType) {
           .replace(/[\u0300-\u036f]/g, "");
 
         if (
-          textApparel.includes(tagName) ||
-          textApparelSimple.includes(tagName)
+          textApparel.includes(searchValue) ||
+          textApparelSimple.includes(searchValue)
         ) {
           // reshow it after hide it
           element.style.display = "";
@@ -254,7 +189,7 @@ function searchRecipeWithTag(tagName, tagType) {
     }
 
     // // for Ustensil Tag
-    if (tagType == "ustensil") {
+    if (searchType == "ustensil") {
       if (element.dataset.ustensillist) {
         const textUstensil = element.dataset.ustensillist.toLowerCase();
         const textUstensilSimple = textUstensil
@@ -262,8 +197,8 @@ function searchRecipeWithTag(tagName, tagType) {
           .replace(/[\u0300-\u036f]/g, "");
 
         if (
-          textUstensil.includes(tagName) ||
-          textUstensilSimple.includes(tagName)
+          textUstensil.includes(searchValue) ||
+          textUstensilSimple.includes(searchValue)
         ) {
           // reshow it after hide it
           element.style.display = "";
@@ -276,6 +211,49 @@ function searchRecipeWithTag(tagName, tagType) {
       } else {
         // hide it
         element.style.display = "none";
+      }
+    }
+
+    if (searchType == "mainbar") {
+      // Titre
+      const textTitle = element
+        .querySelector(".card-recipes-txt-top-left")
+        .innerText.toLocaleLowerCase();
+      // Title sans accent
+      const textTitleSimple = textTitle
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+      // Description
+      const textDsc = element
+        .querySelector(".card-recipes-txt-bottom-right")
+        .innerText.toLocaleLowerCase();
+      // Description sans accent
+      const textDscSimple = textDsc
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+
+      // search.length >= 3 // fonctionne aussi pour les tag
+      if (searchValue.length >= 3) {
+        if (
+          textTitle.includes(searchValue) ||
+          textDsc.includes(searchValue) ||
+          textTitleSimple.includes(searchValue) ||
+          textDscSimple.includes(searchValue)
+        ) {
+          // reshow it after hide it
+          element.style.display = "";
+          // Create Array with Element who match
+          TagSearchResultElement.push(element);
+        } else {
+          // hide it
+          element.style.display = "none";
+        }
+      }
+      if (searchValue.length < 3) {
+        // reshow all after hide it
+        element.style.display = "";
+        // Create Array with Element who match
+        TagSearchResultElement.push(element);
       }
     }
   });
@@ -284,23 +262,19 @@ function searchRecipeWithTag(tagName, tagType) {
 }
 
 // ===== Recherche dans le tableau de la précédente recherche =====
-function searchRecipeWithPreviousTagResults(
+function searchRecipeWithPreviousResults(
   previousTagSearchResult,
-  tagName,
-  tagType
+  searchValue,
+  searchType
 ) {
-  // previous Search (Element)
-  const IngredientSearchResultElement = previousTagSearchResult;
-  // console.log(IngredientSearchResultElement);
-
   // Initialiser un array
   const TagSearchResultElement = [];
 
   // Hide/Show Tag + Create an array of [elements] w/ those who mach
-  IngredientSearchResultElement.forEach((element) => {
+  previousTagSearchResult.forEach((element) => {
     //
     // for Ingredient Tag
-    if (tagType == "ingredient") {
+    if (searchType == "ingredient") {
       const textIngredient = element
         .querySelector(".card-recipes-txt-bottom-left")
         .innerText.toLocaleLowerCase();
@@ -309,8 +283,8 @@ function searchRecipeWithPreviousTagResults(
         .replace(/[\u0300-\u036f]/g, "");
 
       if (
-        textIngredient.includes(tagName) ||
-        textIngredientSimple.includes(tagName)
+        textIngredient.includes(searchValue) ||
+        textIngredientSimple.includes(searchValue)
       ) {
         // reshow it after hide it
         element.style.display = "";
@@ -323,7 +297,7 @@ function searchRecipeWithPreviousTagResults(
     }
 
     // for Apparel Tag
-    if (tagType == "apparel") {
+    if (searchType == "apparel") {
       if (element.dataset.apparellist) {
         const textApparel = element.dataset.apparellist.toLowerCase();
         const textApparelSimple = textApparel
@@ -331,8 +305,8 @@ function searchRecipeWithPreviousTagResults(
           .replace(/[\u0300-\u036f]/g, "");
 
         if (
-          textApparel.includes(tagName) ||
-          textApparelSimple.includes(tagName)
+          textApparel.includes(searchValue) ||
+          textApparelSimple.includes(searchValue)
         ) {
           // reshow it after hide it
           element.style.display = "";
@@ -349,7 +323,7 @@ function searchRecipeWithPreviousTagResults(
     }
 
     // // for Ustensil Tag
-    if (tagType == "ustensil") {
+    if (searchType == "ustensil") {
       if (element.dataset.ustensillist) {
         const textUstensil = element.dataset.ustensillist.toLowerCase();
         const textUstensilSimple = textUstensil
@@ -357,8 +331,8 @@ function searchRecipeWithPreviousTagResults(
           .replace(/[\u0300-\u036f]/g, "");
 
         if (
-          textUstensil.includes(tagName) ||
-          textUstensilSimple.includes(tagName)
+          textUstensil.includes(searchValue) ||
+          textUstensilSimple.includes(searchValue)
         ) {
           // reshow it after hide it
           element.style.display = "";
@@ -371,6 +345,49 @@ function searchRecipeWithPreviousTagResults(
       } else {
         // hide it
         element.style.display = "none";
+      }
+    }
+
+    if (searchType == "mainbar") {
+      // Titre
+      const textTitle = element
+        .querySelector(".card-recipes-txt-top-left")
+        .innerText.toLocaleLowerCase();
+      // Title sans accent
+      const textTitleSimple = textTitle
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+      // Description
+      const textDsc = element
+        .querySelector(".card-recipes-txt-bottom-right")
+        .innerText.toLocaleLowerCase();
+      // Description sans accent
+      const textDscSimple = textDsc
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+
+      // search.length >= 3 // fonctionne aussi pour les tag
+      if (searchValue.length >= 3) {
+        if (
+          textTitle.includes(searchValue) ||
+          textDsc.includes(searchValue) ||
+          textTitleSimple.includes(searchValue) ||
+          textDscSimple.includes(searchValue)
+        ) {
+          // reshow it after hide it
+          element.style.display = "";
+          // Create Array with Element who match
+          TagSearchResultElement.push(element);
+        } else {
+          // hide it
+          element.style.display = "none";
+        }
+      }
+      if (searchValue.length < 3) {
+        // reshow all after hide it
+        element.style.display = "";
+        // Create Array with Element who match
+        TagSearchResultElement.push(element);
       }
     }
   });
