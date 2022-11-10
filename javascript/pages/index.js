@@ -188,7 +188,7 @@ function searchRecipe(searchValue, searchType) {
       }
     }
 
-    // // for Ustensil Tag
+    // for Ustensil Tag
     if (searchType == "ustensil") {
       if (element.dataset.ustensillist) {
         const textUstensil = element.dataset.ustensillist.toLowerCase();
@@ -214,6 +214,7 @@ function searchRecipe(searchValue, searchType) {
       }
     }
 
+    // for main bar search input text
     if (searchType == "mainbar") {
       // Titre
       const textTitle = element
@@ -232,7 +233,7 @@ function searchRecipe(searchValue, searchType) {
         .normalize("NFD")
         .replace(/[\u0300-\u036f]/g, "");
 
-      // search.length >= 3 // fonctionne aussi pour les tag
+      // if Value >= 3
       if (searchValue.length >= 3) {
         if (
           textTitle.includes(searchValue) ||
@@ -249,11 +250,12 @@ function searchRecipe(searchValue, searchType) {
           element.style.display = "none";
         }
       }
+      // if Value < 3 => Show all
       if (searchValue.length < 3) {
         // reshow all after hide it
         element.style.display = "";
         // Create Array with Element who match
-        TagSearchResultElement.push(element);
+        TagSearchResultElement.push(element); // here ?
       }
     }
   });
@@ -322,7 +324,7 @@ function searchRecipeWithPreviousResults(
       }
     }
 
-    // // for Ustensil Tag
+    // for Ustensil Tag
     if (searchType == "ustensil") {
       if (element.dataset.ustensillist) {
         const textUstensil = element.dataset.ustensillist.toLowerCase();
@@ -348,6 +350,7 @@ function searchRecipeWithPreviousResults(
       }
     }
 
+    // for main bar search input text
     if (searchType == "mainbar") {
       // Titre
       const textTitle = element

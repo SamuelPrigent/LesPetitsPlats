@@ -9,8 +9,8 @@ let previousTag = "";
 function searchRecipeWithAllTags() {
   const TagsArray = getTagsList();
   //
-  console.clear();
-  console.log("Tags Array", TagsArray);
+  //   console.clear();
+  //   console.log("Tags Array", TagsArray);
 
   // L'ajout de tag reset cette valeur
   let previousTagSearch = "";
@@ -21,8 +21,7 @@ function searchRecipeWithAllTags() {
     const errorMsg = document.querySelector(".section-recipes-error");
 
     if (i == 0) {
-      // check if mainBarSearch exist
-      // Cette logique ne pourrait pas fonctionner car => boucle infini
+      // check if mainBarSearch exist = logique qui créé boucle infini
 
       // Stock les résultats
       previousTagSearch = searchRecipe(searchValue, searchType);
@@ -34,8 +33,8 @@ function searchRecipeWithAllTags() {
       }
 
       // console
-      console.log("/// i=" + i);
-      console.log("Search Result", previousTagSearch);
+      //   console.log("/// i=" + i);
+      //   console.log("Search Result", previousTagSearch);
     }
     if (i >= 1) {
       // Recherche + stock les résultats pour la prochaine boucle
@@ -52,8 +51,8 @@ function searchRecipeWithAllTags() {
       }
 
       // console
-      console.log("/// i=" + i);
-      console.log("New Result", previousTagSearch);
+      //   console.log("/// i=" + i);
+      //   console.log("New Result", previousTagSearch);
       // console.log(`Search ${searchValue} (i) in ${TagsArray[i - 1].name} (i-1) `);
     }
   }
@@ -69,11 +68,12 @@ function searchRecipeWithMainBar() {
   // get input value
   const searchBar = document.getElementById("mainSearchBar");
   const searchValue = searchBar.value.toLowerCase();
-  const tagSearch = searchRecipeWithAllTags(); // Boucle infini ? si pareil autre côté ?
+  const TagsArray = getTagsList();
+  const tagSearch = searchRecipeWithAllTags(); // boucle infini si fait l'inverse chez les tag
   const errorMsg = document.querySelector(".section-recipes-error");
 
-  // if pas de recherche via tag
-  if (tagSearch == "") {
+  // if pas de recherche via tag //
+  if (TagsArray == "") {
     mainBarSearch = searchRecipe(searchValue, "mainbar");
     // Toogle Msg if no result
     if (mainBarSearch == "") {
@@ -83,7 +83,7 @@ function searchRecipeWithMainBar() {
     }
   }
   //   if recherche déjà existante via tag
-  if (tagSearch != "") {
+  if (TagsArray != "") {
     mainBarSearch = searchRecipeWithPreviousResults(
       tagSearch,
       searchValue,

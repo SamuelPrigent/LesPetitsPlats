@@ -12,8 +12,7 @@ ingredientFilter.forEach((element) => {
     // Search Recipe with Tag Array
     searchRecipeWithAllTags();
     // Search Recipe with Main Bar After (pas de boucle infini)
-    // Mais écrase la recherche faite par la boucle des tags
-    // searchRecipeWithMainBar();
+    searchRecipeWithMainBar();
   });
 });
 
@@ -27,8 +26,7 @@ apparelFilter.forEach((element) => {
     // Search Recipe with Tag Array
     searchRecipeWithAllTags();
     // Search Recipe with Main Bar After (pas de boucle infini)
-    // Mais écrase la recherche faite par la boucle des tags
-    // searchRecipeWithMainBar();
+    searchRecipeWithMainBar();
   });
 });
 
@@ -42,8 +40,7 @@ ustensilFilter.forEach((element) => {
     // Search Recipe with Tag Array
     searchRecipeWithAllTags();
     // Search Recipe with Main Bar After (pas de boucle infini)
-    // Mais écrase la recherche faite par la boucle des tags
-    // searchRecipeWithMainBar();
+    searchRecipeWithMainBar();
   });
 });
 
@@ -99,9 +96,9 @@ function createTag(tagName, type) {
   // Remove it when click on Cross
   tagSvg.addEventListener("click", () => {
     tag.remove();
-    searchRecipeWithMainBar();
-    searchRecipeWithAllTags();
     // searchRecipeWithMainBar();
+    searchRecipeWithAllTags();
+    searchRecipeWithMainBar();
   });
 }
 
@@ -149,60 +146,3 @@ function getTagsList() {
 
   return TagsArray;
 }
-
-// // ===== Filter Recipes with Tag Array =====
-
-// // for loop in (searchRecipeWithAllTags)
-// let previousTag = "";
-
-// // Déclenché a l'ajout d'un Tag
-// function searchRecipeWithAllTags() {
-//   const TagsArray = getTagsList();
-//   //
-//   console.clear();
-//   console.log("Tags Array", TagsArray);
-
-//   // L'ajout de tag reset cette valeur
-//   let previousTagSearch = "";
-
-//   for (let i = 0; i < TagsArray.length; i++) {
-//     const searchValue = TagsArray[i].name.toLowerCase();
-//     const searchType = TagsArray[i].type;
-
-//     if (i == 0) {
-//       // Stock les résultats
-//       previousTagSearch = searchRecipe(searchValue, searchType);
-//       // Toogle Msg if no result
-//       const errorMsg = document.querySelector(".section-recipes-error");
-//       if (previousTagSearch == "") {
-//         errorMsg.style.display = "flex";
-//       } else {
-//         errorMsg.style.display = "none";
-//       }
-
-//       // console
-//       console.log("/// i=" + i);
-//       console.log("Search Result", previousTagSearch);
-//     }
-//     if (i >= 1) {
-//       // Recherche + stock les résultats pour la prochaine boucle
-//       previousTagSearch = searchRecipeWithPreviousResults(
-//         previousTagSearch,
-//         searchValue,
-//         searchType
-//       );
-//       // Toogle Msg if no result
-//       const errorMsg = document.querySelector(".section-recipes-error");
-//       if (previousTagSearch == "") {
-//         errorMsg.style.display = "flex";
-//       } else {
-//         errorMsg.style.display = "none";
-//       }
-
-//       // console
-//       console.log("/// i=" + i);
-//       console.log("New Result", previousTagSearch);
-//       // console.log(`Search ${searchValue} (i) in ${TagsArray[i - 1].name} (i-1) `);
-//     }
-//   }
-// }
