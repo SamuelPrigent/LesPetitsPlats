@@ -232,6 +232,13 @@ function searchRecipe(searchValue, searchType) {
       const textDscSimple = textDsc
         .normalize("NFD")
         .replace(/[\u0300-\u036f]/g, "");
+      // Ingredients list
+      const textIngredient = element
+        .querySelector(".card-recipes-txt-bottom-left")
+        .innerText.toLocaleLowerCase();
+      const textIngredientSimple = textIngredient
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
 
       // if Value >= 3
       if (searchValue.length >= 3) {
@@ -239,7 +246,9 @@ function searchRecipe(searchValue, searchType) {
           textTitle.includes(searchValue) ||
           textDsc.includes(searchValue) ||
           textTitleSimple.includes(searchValue) ||
-          textDscSimple.includes(searchValue)
+          textDscSimple.includes(searchValue) ||
+          textIngredient.includes(searchValue) ||
+          textIngredientSimple.includes(searchValue)
         ) {
           // reshow it after hide it
           element.style.display = "";
@@ -368,6 +377,13 @@ function searchRecipeWithPreviousResults(
       const textDscSimple = textDsc
         .normalize("NFD")
         .replace(/[\u0300-\u036f]/g, "");
+      // Ingredients list
+      const textIngredient = element
+        .querySelector(".card-recipes-txt-bottom-left")
+        .innerText.toLocaleLowerCase();
+      const textIngredientSimple = textIngredient
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
 
       // search.length >= 3 // fonctionne aussi pour les tag
       if (searchValue.length >= 3) {
@@ -375,7 +391,9 @@ function searchRecipeWithPreviousResults(
           textTitle.includes(searchValue) ||
           textDsc.includes(searchValue) ||
           textTitleSimple.includes(searchValue) ||
-          textDscSimple.includes(searchValue)
+          textDscSimple.includes(searchValue) ||
+          textIngredient.includes(searchValue) ||
+          textIngredientSimple.includes(searchValue)
         ) {
           // reshow it after hide it
           element.style.display = "";
