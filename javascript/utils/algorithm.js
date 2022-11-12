@@ -59,17 +59,16 @@ function searchRecipeWithAllTags() {
   return previousTagSearch;
 }
 
-// ==== Main Bar ====
+// ==== Search Recipe Algoritm ====
 
-function searchRecipeWithMainBar() {
-  // reset cette valeur au début de la fonction et la return à la fin
+function searchRecipeWithAlgoritm() {
+  // reset valeur au début de la fonction et la return à la fin
   let mainBarSearch = "";
 
   // get input value
   const searchBar = document.getElementById("mainSearchBar");
   const searchValue = searchBar.value.toLowerCase();
   const TagsArray = getTagsList();
-  const tagSearch = searchRecipeWithAllTags(); // boucle infini si fait l'inverse chez les tag
   const errorMsg = document.querySelector(".section-recipes-error");
 
   // if pas de recherche via tag //
@@ -84,6 +83,7 @@ function searchRecipeWithMainBar() {
   }
   //   if recherche déjà existante via tag
   if (TagsArray != "") {
+    const tagSearch = searchRecipeWithAllTags(); // get tagSearch result
     mainBarSearch = searchRecipeWithPreviousResults(
       tagSearch,
       searchValue,
@@ -103,5 +103,6 @@ function searchRecipeWithMainBar() {
 const mainSearchBar = document.getElementById("mainSearchBar");
 // Change on Input
 mainSearchBar.addEventListener("input", (e) => {
-  searchRecipeWithMainBar();
+  // Search Recipe
+  searchRecipeWithAlgoritm();
 });

@@ -9,10 +9,8 @@ ingredientFilter.forEach((element) => {
     const filterText = element.innerText;
     // Add Tag in HTML
     createTag(filterText, "ingredient");
-    // Search Recipe with Tag Array
-    searchRecipeWithAllTags();
-    // Search Recipe with Main Bar After (pas de boucle infini)
-    searchRecipeWithMainBar();
+    // Search Recipe
+    searchRecipeWithAlgoritm();
   });
 });
 
@@ -23,10 +21,8 @@ apparelFilter.forEach((element) => {
     const filterText = element.innerText;
     // Add Tag in HTML
     createTag(filterText, "apparel");
-    // Search Recipe with Tag Array
-    searchRecipeWithAllTags();
-    // Search Recipe with Main Bar After (pas de boucle infini)
-    searchRecipeWithMainBar();
+    // Search Recipe
+    searchRecipeWithAlgoritm();
   });
 });
 
@@ -37,10 +33,8 @@ ustensilFilter.forEach((element) => {
     const filterText = element.innerText;
     // Add Tag in HTML
     createTag(filterText, "ustensil");
-    // Search Recipe with Tag Array
-    searchRecipeWithAllTags();
-    // Search Recipe with Main Bar After (pas de boucle infini)
-    searchRecipeWithMainBar();
+    // Search Recipe
+    searchRecipeWithAlgoritm();
   });
 });
 
@@ -96,9 +90,8 @@ function createTag(tagName, type) {
   // Remove it when click on Cross
   tagSvg.addEventListener("click", () => {
     tag.remove();
-    // searchRecipeWithMainBar();
-    searchRecipeWithAllTags();
-    searchRecipeWithMainBar();
+    // Search Recipe
+    searchRecipeWithAlgoritm();
   });
 }
 
