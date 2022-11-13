@@ -19,65 +19,198 @@ recipes.forEach((recipes) => {
 // === Création listes sans doubles [ingrédients, ustensiles, appareil] ===
 
 // === Listes des ingrédients [112] ===
-const IngredientsCombinaison = recipes.map((e) => e.ingredients); // all combinaison (recipes)
-const IngredientsValues = IngredientsCombinaison.flat(1); // all ingredients.array + qty + unit
-const IngredientOnlyArray = IngredientsValues.map((e) => e.ingredient); // all ingredient with double
-const IngredientOnlyArrayLowerCase = IngredientOnlyArray.map((element) => {
-  return element.toLowerCase();
-});
-const IngredientsList = new Set(IngredientOnlyArrayLowerCase); // Remove Double
-const IngredientsArray = Array.from(IngredientsList);
-IngredientsArray.sort((a, b) => (a > b ? 1 : -1));
-// console.log(IngredientsArray);
+function getIngredientsList() {
+  const IngredientsCombinaison = recipes.map((e) => e.ingredients); // all combinaison (recipes)
+  const IngredientsValues = IngredientsCombinaison.flat(1); // all ingredients.array + qty + unit
+  const IngredientOnlyArray = IngredientsValues.map((e) => e.ingredient); // all ingredient with double
+  const IngredientOnlyArrayLowerCase = IngredientOnlyArray.map((element) => {
+    return element.toLowerCase();
+  });
+  const IngredientsList = new Set(IngredientOnlyArrayLowerCase); // Remove Double
+  const IngredientsArray = Array.from(IngredientsList);
+  IngredientsArray.sort((a, b) => (a > b ? 1 : -1));
+  // console.log(IngredientsArray);
+  return IngredientsArray;
+}
+
+// Create [Ingrédients] with Search Result
+function getIngredientsListWithSearchResult(searchResult) {
+  // console.log(searchResult);
+  let NewIngredientListWithDouble = [];
+  let NewIngredientListWithoutDouble = [];
+  let NewIngredientListArray = [];
+  //
+  searchResult.forEach((element) => {
+    // Ingredients Div in One Card
+    const IngredientDiv = element.querySelectorAll(
+      ".card-recipes-txt-bottom-left-bold"
+    );
+    IngredientDiv.forEach((element) => {
+      const OneIngredientOfList = element.innerText; // pas besoins de lowercase
+      NewIngredientListWithDouble.push(OneIngredientOfList);
+    });
+    // Après avoir parcouru toute les div et fait la liste
+    NewIngredientListWithoutDouble = new Set(NewIngredientListWithDouble); // Remove Double
+    NewIngredientListArray = Array.from(NewIngredientListWithoutDouble);
+    NewIngredientListArray.sort((a, b) => (a > b ? 1 : -1));
+  });
+  // Liste total des ingredients avec double
+  // console.log(NewIngredientListWithDouble);
+  // console.log(NewIngredientListArray);
+
+  return NewIngredientListArray;
+}
 
 // === Liste des appareils [10] ===
-const ApparelCombinaison = recipes.map((e) => e.appliance);
-const ApparelValues = ApparelCombinaison.flat(1); // all values with double
-const newApparelList = Array.from(ApparelValues);
-const newApparelListWithoutUndefined = newApparelList.filter((element) => {
-  return element !== undefined;
-});
-const newApparelListLowercase = newApparelListWithoutUndefined.map(
-  (element) => {
-    return element.toLowerCase();
-  }
-);
-const ApparelList = new Set(newApparelListLowercase); // Remove Double
-const ApparelsArray = Array.from(ApparelList);
-ApparelsArray.sort((a, b) => (a > b ? 1 : -1));
-// console.log(ApparelsArray);
+function getApparelsList() {
+  const ApparelCombinaison = recipes.map((e) => e.appliance);
+  const ApparelValues = ApparelCombinaison.flat(1); // all values with double
+  const newApparelList = Array.from(ApparelValues);
+  const newApparelListWithoutUndefined = newApparelList.filter((element) => {
+    return element !== undefined;
+  });
+  const newApparelListLowercase = newApparelListWithoutUndefined.map(
+    (element) => {
+      return element.toLowerCase();
+    }
+  );
+  const ApparelList = new Set(newApparelListLowercase); // Remove Double
+  const ApparelsArray = Array.from(ApparelList);
+  ApparelsArray.sort((a, b) => (a > b ? 1 : -1));
+  // console.log(ApparelsArray);
+  return ApparelsArray;
+}
+
+// Create [Apparel] with Search Result
+function getApparelsListWithSearchResult(searchResult) {
+  // console.log(searchResult);
+  let NewApparelListWithDouble = [];
+  let NewApparelListWithoutDouble = [];
+  let NewApparelListArray = [];
+  //
+  searchResult.forEach((element) => {
+    // Apparel Div in One Card
+    if (element.dataset.apparellist) {
+      const ApparelDiv = element.dataset.apparellist.toLowerCase();
+      const ApparelList = ApparelDiv.split(",");
+
+      ApparelList.forEach((element) => {
+        NewApparelListWithDouble.push(element);
+      });
+      // Après avoir parcouru toute les div et fait la liste
+      NewApparelListWithoutDouble = new Set(NewApparelListWithDouble); // Remove Double
+      NewApparelListArray = Array.from(NewApparelListWithoutDouble);
+      NewApparelListArray.sort((a, b) => (a > b ? 1 : -1));
+    }
+  });
+  // Liste total des ingredients avec double
+  // console.log(NewApparelListWithDouble);
+  // console.log(NewApparelListArray);
+
+  return NewApparelListArray;
+}
 
 // === Listes des ustensils [22] ===
-const UstensilsCombinaison = recipes.map((e) => e.ustensils);
-const UstensilsValues = UstensilsCombinaison.flat(1); // all values with double
-const UstensilsOnlyArrayLowerCase = UstensilsValues.map((element) => {
-  return element.toLowerCase();
-});
-const UstensilsList = new Set(UstensilsOnlyArrayLowerCase); // Remove Double
-const UstensilsArray = Array.from(UstensilsList);
-UstensilsArray.sort((a, b) => (a > b ? 1 : -1));
-// console.log(UstensilsArray);
+function getUstensilsList() {
+  const UstensilsCombinaison = recipes.map((e) => e.ustensils);
+  const UstensilsValues = UstensilsCombinaison.flat(1); // all values with double
+  const UstensilsOnlyArrayLowerCase = UstensilsValues.map((element) => {
+    return element.toLowerCase();
+  });
+  const UstensilsList = new Set(UstensilsOnlyArrayLowerCase); // Remove Double
+  const UstensilsArray = Array.from(UstensilsList);
+  UstensilsArray.sort((a, b) => (a > b ? 1 : -1));
+  // console.log(UstensilsArray);
+  return UstensilsArray;
+}
+
+// Create [Ustensils] with Search Result
+function getUstensilsListWithSearchResult(searchResult) {
+  // console.log(searchResult);
+  let NewUstensilListWithDouble = [];
+  let NewUstensilListWithoutDouble = [];
+  let NewUstensilListArray = [];
+  //
+  searchResult.forEach((element) => {
+    if (element.dataset.ustensillist) {
+      // Ustensil Div in One Card
+      const UstensilDiv = element.dataset.ustensillist.toLowerCase();
+      const UstensilList = UstensilDiv.split(",");
+
+      UstensilList.forEach((element) => {
+        NewUstensilListWithDouble.push(element);
+      });
+      // Après avoir parcouru toute les div et fait la liste
+      NewUstensilListWithoutDouble = new Set(NewUstensilListWithDouble); // Remove Double
+      NewUstensilListArray = Array.from(NewUstensilListWithoutDouble);
+      NewUstensilListArray.sort((a, b) => (a > b ? 1 : -1));
+    }
+  });
+  // Liste total des ingredients avec double
+  // console.log(NewUstensilListWithDouble);
+  // console.log(NewUstensilListArray);
+
+  return NewUstensilListArray;
+}
 
 //
 // ====== Factory for Dropdown List ======
 
+// Besoins version modifié de getIngredientsList
+// Qui peut prendre la liste d'élément résultant d'une recherche
+// et produire un array [ingrédients] à partir des éléments présent dedans
+// function qui serait appelé dans l'algo
+
 // Create Ingredients List
+const IngredientsArray = getIngredientsList();
 IngredientsArray.forEach((element) => {
   const newFilter = getIngredientFilter(element);
   ingredientSection.appendChild(newFilter);
 });
 
+// Refresh Ingredients List // searchResult (from global algortihm)
+function RefreshIngredientsList(searchResult) {
+  ingredientSection.innerHTML = ""; // vide l'ancienne liste
+  const NewIngredientsArray = getIngredientsListWithSearchResult(searchResult);
+  NewIngredientsArray.forEach((element) => {
+    const newFilter = getIngredientFilter(element);
+    ingredientSection.appendChild(newFilter);
+  });
+}
+
 // Create Apparel List
+const ApparelsArray = getApparelsList();
 ApparelsArray.forEach((element) => {
   const newFilter = getApparelFilter(element);
   apparelSection.appendChild(newFilter);
 });
 
+// Refresh Apparel List // searchResult (from global algortihm)
+function RefreshApparelsList(searchResult) {
+  apparelSection.innerHTML = ""; // vide l'ancienne liste
+  const NewApparelsArray = getApparelsListWithSearchResult(searchResult);
+  NewApparelsArray.forEach((element) => {
+    const newFilter = getApparelFilter(element);
+    apparelSection.appendChild(newFilter);
+  });
+}
+
 // Create Ustensils List
+const UstensilsArray = getUstensilsList();
 UstensilsArray.forEach((element) => {
   const newFilter = getUstensilFilter(element);
   ustensilSection.appendChild(newFilter);
 });
+
+// Refresh Ustensils List // searchResult (from global algortihm)
+function RefreshUstensilsList(searchResult) {
+  ustensilSection.innerHTML = ""; // vide l'ancienne liste
+  const NewUstensilsArray = getUstensilsListWithSearchResult(searchResult);
+  NewUstensilsArray.forEach((element) => {
+    const newFilter = getUstensilFilter(element);
+    ustensilSection.appendChild(newFilter);
+  });
+}
 
 //
 // ====== Fonctionnalités de Recherche ======

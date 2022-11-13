@@ -96,6 +96,16 @@ function searchRecipeWithAlgoritm() {
       errorMsg.style.display = "none";
     }
   }
+  // Refresh Ingredients Filter List with results
+  RefreshIngredientsList(mainBarSearch);
+  EventListenerForIngredientTagCreation();
+  // Refresh Apparels Filter List with results
+  RefreshApparelsList(mainBarSearch);
+  EventListenerForApparelTagCreation();
+  // Refresh Ustensils Filter List with results
+  RefreshUstensilsList(mainBarSearch);
+  EventListenerForUstensilTagCreation();
+
   return mainBarSearch;
 }
 

@@ -3,40 +3,49 @@
 // init ingredients tag event listener ?
 
 // Add Ingredient Tag
-const ingredientFilter = document.querySelectorAll(".ingredient-filter");
-ingredientFilter.forEach((element) => {
-  element.addEventListener("click", () => {
-    const filterText = element.innerText;
-    // Add Tag in HTML
-    createTag(filterText, "ingredient");
-    // Search Recipe
-    searchRecipeWithAlgoritm();
+function EventListenerForIngredientTagCreation() {
+  const ingredientFilter = document.querySelectorAll(".ingredient-filter");
+  ingredientFilter.forEach((element) => {
+    element.addEventListener("click", () => {
+      const filterText = element.innerText;
+      // Add Tag in HTML
+      createTag(filterText, "ingredient");
+      // Search Recipe
+      searchRecipeWithAlgoritm();
+    });
   });
-});
+}
+EventListenerForIngredientTagCreation();
 
 // Add Apparel Tag
-const apparelFilter = document.querySelectorAll(".apparel-filter");
-apparelFilter.forEach((element) => {
-  element.addEventListener("click", () => {
-    const filterText = element.innerText;
-    // Add Tag in HTML
-    createTag(filterText, "apparel");
-    // Search Recipe
-    searchRecipeWithAlgoritm();
+function EventListenerForApparelTagCreation() {
+  const apparelFilter = document.querySelectorAll(".apparel-filter");
+  apparelFilter.forEach((element) => {
+    element.addEventListener("click", () => {
+      const filterText = element.innerText;
+      // Add Tag in HTML
+      createTag(filterText, "apparel");
+      // Search Recipe
+      searchRecipeWithAlgoritm();
+    });
   });
-});
+}
+EventListenerForApparelTagCreation();
 
 // Add Ustensil Tag
-const ustensilFilter = document.querySelectorAll(".ustensil-filter");
-ustensilFilter.forEach((element) => {
-  element.addEventListener("click", () => {
-    const filterText = element.innerText;
-    // Add Tag in HTML
-    createTag(filterText, "ustensil");
-    // Search Recipe
-    searchRecipeWithAlgoritm();
+function EventListenerForUstensilTagCreation() {
+  const ustensilFilter = document.querySelectorAll(".ustensil-filter");
+  ustensilFilter.forEach((element) => {
+    element.addEventListener("click", () => {
+      const filterText = element.innerText;
+      // Add Tag in HTML
+      createTag(filterText, "ustensil");
+      // Search Recipe
+      searchRecipeWithAlgoritm();
+    });
   });
-});
+}
+EventListenerForUstensilTagCreation();
 
 // ===== CreateTag ===== //
 
