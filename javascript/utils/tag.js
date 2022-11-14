@@ -11,7 +11,7 @@ function EventListenerForIngredientTagCreation() {
       // Add Tag in HTML
       createTag(filterText, "ingredient");
       // Search Recipe
-      searchRecipeWithAlgoritm();
+      searchRecipeWithAlgorithm();
       // Refresh event listener for li after create a new list
       // FocusAndClearInputDropdownEventListener("Ingredient");
       // Refresh Close Dropdown Event listener after add a tag
@@ -30,7 +30,7 @@ function EventListenerForApparelTagCreation() {
       // Add Tag in HTML
       createTag(filterText, "apparel");
       // Search Recipe
-      searchRecipeWithAlgoritm();
+      searchRecipeWithAlgorithm();
       // Refresh event listener for li after create a new list
       // FocusAndClearInputDropdownEventListener("Apparel");
       // Refresh Close Dropdown Event listener after add a tag
@@ -49,7 +49,7 @@ function EventListenerForUstensilTagCreation() {
       // Add Tag in HTML
       createTag(filterText, "ustensil");
       // Search Recipe
-      searchRecipeWithAlgoritm();
+      searchRecipeWithAlgorithm();
       // Refresh event listener for li after create a new list
       // FocusAndClearInputDropdownEventListener("Ustensil");
       // Refresh Close Dropdown Event listener after add a tag
@@ -112,7 +112,7 @@ function createTag(tagName, type) {
   tagSvg.addEventListener("click", () => {
     tag.remove();
     // Search Recipe
-    searchRecipeWithAlgoritm();
+    searchRecipeWithAlgorithm();
   });
 }
 

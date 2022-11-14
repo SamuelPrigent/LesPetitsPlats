@@ -2,13 +2,9 @@
 
 // ==== Tags ====
 
-// for loop in (searchRecipeWithAllTags)
-let previousTag = "";
-
 // Déclenché a l'ajout d'un Tag
 function searchRecipeWithAllTags() {
   const TagsArray = getTagsList();
-  //
   //   console.clear();
   //   console.log("Tags Array", TagsArray);
 
@@ -21,8 +17,6 @@ function searchRecipeWithAllTags() {
     const errorMsg = document.querySelector(".section-recipes-error");
 
     if (i == 0) {
-      // check if mainBarSearch exist = logique qui créé boucle infini
-
       // Stock les résultats
       previousTagSearch = searchRecipe(searchValue, searchType);
       // Toogle Msg if no result
@@ -32,9 +26,8 @@ function searchRecipeWithAllTags() {
         errorMsg.style.display = "none";
       }
 
-      // console
-      //   console.log("/// i=" + i);
-      //   console.log("Search Result", previousTagSearch);
+      // console.log("/// i=" + i);
+      // console.log("Search Result", previousTagSearch);
     }
     if (i >= 1) {
       // Recherche + stock les résultats pour la prochaine boucle
@@ -50,9 +43,8 @@ function searchRecipeWithAllTags() {
         errorMsg.style.display = "none";
       }
 
-      // console
-      //   console.log("/// i=" + i);
-      //   console.log("New Result", previousTagSearch);
+      // console.log("/// i=" + i);
+      // console.log("New Result", previousTagSearch);
       // console.log(`Search ${searchValue} (i) in ${TagsArray[i - 1].name} (i-1) `);
     }
   }
@@ -61,9 +53,9 @@ function searchRecipeWithAllTags() {
 
 // ==== Search Recipe Algoritm ====
 
-function searchRecipeWithAlgoritm() {
+function searchRecipeWithAlgorithm() {
   // reset valeur au début de la fonction et la return à la fin
-  let mainBarSearch = "";
+  let GlobalSearchResult = "";
 
   // get input value
   const searchBar = document.getElementById("mainSearchBar");
@@ -73,9 +65,9 @@ function searchRecipeWithAlgoritm() {
 
   // if pas de recherche via tag //
   if (TagsArray == "") {
-    mainBarSearch = searchRecipe(searchValue, "mainbar");
+    GlobalSearchResult = searchRecipe(searchValue, "mainbar");
     // Toogle Msg if no result
-    if (mainBarSearch == "") {
+    if (GlobalSearchResult == "") {
       errorMsg.style.display = "flex";
     } else {
       errorMsg.style.display = "none";
@@ -84,32 +76,32 @@ function searchRecipeWithAlgoritm() {
   //   if recherche déjà existante via tag
   if (TagsArray != "") {
     const tagSearch = searchRecipeWithAllTags(); // get tagSearch result
-    mainBarSearch = searchRecipeWithPreviousResults(
+    GlobalSearchResult = searchRecipeWithPreviousResults(
       tagSearch,
       searchValue,
       "mainbar"
     );
     // Toogle Msg if no result
-    if (mainBarSearch == "") {
+    if (GlobalSearchResult == "") {
       errorMsg.style.display = "flex";
     } else {
       errorMsg.style.display = "none";
     }
   }
   // Refresh Ingredients Filter List with results
-  RefreshIngredientsList(mainBarSearch);
+  RefreshIngredientsList(GlobalSearchResult);
   EventListenerForIngredientTagCreation();
   //   FocusAndClearInputDropdownEventListener("Ingredient");
   // Refresh Apparels Filter List with results
-  RefreshApparelsList(mainBarSearch);
+  RefreshApparelsList(GlobalSearchResult);
   EventListenerForApparelTagCreation();
   //   FocusAndClearInputDropdownEventListener("Apparel");
   // Refresh Ustensils Filter List with results
-  RefreshUstensilsList(mainBarSearch);
+  RefreshUstensilsList(GlobalSearchResult);
   EventListenerForUstensilTagCreation();
   //   FocusAndClearInputDropdownEventListener("Ustensil");
 
-  return mainBarSearch;
+  return GlobalSearchResult;
 }
 
 // Input change call the Search
@@ -117,5 +109,5 @@ const mainSearchBar = document.getElementById("mainSearchBar");
 // Change on Input
 mainSearchBar.addEventListener("input", (e) => {
   // Search Recipe
-  searchRecipeWithAlgoritm();
+  searchRecipeWithAlgorithm();
 });
