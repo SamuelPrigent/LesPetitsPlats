@@ -156,10 +156,7 @@ function getUstensilsListWithSearchResult(searchResult) {
 //
 // ====== Factory for Dropdown List ======
 
-// Besoins version modifié de getIngredientsList
-// Qui peut prendre la liste d'élément résultant d'une recherche
-// et produire un array [ingrédients] à partir des éléments présent dedans
-// function qui serait appelé dans l'algo
+// === Create <li> in Dropdown with All Recipe ===
 
 // Create Ingredients List
 const IngredientsArray = getIngredientsList();
@@ -168,7 +165,23 @@ IngredientsArray.forEach((element) => {
   ingredientSection.appendChild(newFilter);
 });
 
-// Refresh Ingredients List // searchResult (from global algortihm)
+// Create Apparel List
+const ApparelsArray = getApparelsList();
+ApparelsArray.forEach((element) => {
+  const newFilter = getApparelFilter(element);
+  apparelSection.appendChild(newFilter);
+});
+
+// Create Ustensils List
+const UstensilsArray = getUstensilsList();
+UstensilsArray.forEach((element) => {
+  const newFilter = getUstensilFilter(element);
+  ustensilSection.appendChild(newFilter);
+});
+
+// === Create <li> in Dropdown from searchResult ===
+
+// Refresh Ingredients List w/ searchResult (from global algortihm)
 function RefreshIngredientsList(searchResult) {
   ingredientSection.innerHTML = ""; // vide l'ancienne liste
   const NewIngredientsArray = getIngredientsListWithSearchResult(searchResult);
@@ -178,14 +191,7 @@ function RefreshIngredientsList(searchResult) {
   });
 }
 
-// Create Apparel List
-const ApparelsArray = getApparelsList();
-ApparelsArray.forEach((element) => {
-  const newFilter = getApparelFilter(element);
-  apparelSection.appendChild(newFilter);
-});
-
-// Refresh Apparel List // searchResult (from global algortihm)
+// Refresh Apparel List w/ searchResult (from global algortihm)
 function RefreshApparelsList(searchResult) {
   apparelSection.innerHTML = ""; // vide l'ancienne liste
   const NewApparelsArray = getApparelsListWithSearchResult(searchResult);
@@ -195,14 +201,7 @@ function RefreshApparelsList(searchResult) {
   });
 }
 
-// Create Ustensils List
-const UstensilsArray = getUstensilsList();
-UstensilsArray.forEach((element) => {
-  const newFilter = getUstensilFilter(element);
-  ustensilSection.appendChild(newFilter);
-});
-
-// Refresh Ustensils List // searchResult (from global algortihm)
+// Refresh Ustensils List w/ searchResult (from global algortihm)
 function RefreshUstensilsList(searchResult) {
   ustensilSection.innerHTML = ""; // vide l'ancienne liste
   const NewUstensilsArray = getUstensilsListWithSearchResult(searchResult);
@@ -246,9 +245,8 @@ function searchOneFilter() {
   });
 }
 
-// Listen input change for each Search Bar
+// == Check input change forEach Dropdown SearchBar ==
 const AllSearchBar = document.querySelectorAll(".dropdown-searchBar");
-
 AllSearchBar.forEach((element) => {
   element.addEventListener("input", (e) => {
     searchOneFilter();
