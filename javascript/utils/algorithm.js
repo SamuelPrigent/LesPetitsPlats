@@ -23,8 +23,6 @@ function searchRecipeWithAllTags() {
       } else {
         errorMsg.style.display = "none";
       }
-      // console.log("/// i=" + i);
-      // console.log("Search Result", previousTagSearch);
     }
     if (i >= 1) {
       // Recherche + stock les résultats pour la prochaine boucle
@@ -39,9 +37,6 @@ function searchRecipeWithAllTags() {
       } else {
         errorMsg.style.display = "none";
       }
-
-      // console.log("/// i=" + i);
-      // console.log("New Result", previousTagSearch);
     }
   }
   return previousTagSearch;

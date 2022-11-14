@@ -1,17 +1,14 @@
 // ===== Event listener to call => CreateTag =====
 
-// Add a Tag
+// Event listener for Tag Creation
 function EventListenerForTagCreation(type) {
   const typeFilter = document.querySelectorAll(`.${type}-filter`);
   typeFilter.forEach((element) => {
     element.addEventListener("click", () => {
       const filterText = element.innerText;
-      // Add Tag in HTML
-      createTag(filterText, type);
-      // Search Recipe
-      searchRecipeWithAlgorithm();
-      // Refresh Close Dropdown Event listener after add a tag
-      CloseAfterFilterClickEventListener();
+      createTag(filterText, type); // Add Tag in HTML
+      searchRecipeWithAlgorithm(); // Search Recipe
+      CloseAfterFilterClickEventListener(); // Close Dropdown Event listener
     });
   });
 }

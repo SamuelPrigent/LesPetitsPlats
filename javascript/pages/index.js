@@ -5,7 +5,7 @@ const apparelSection = document.querySelector("#section-apparel");
 const ustensilSection = document.querySelector("#section-ustensil");
 
 //
-// ====== Factory for Recipes Card ======
+// ====== Call Factory for Recipes Card ======
 
 // Create Recipes Card [50]
 recipes.forEach((recipes) => {
