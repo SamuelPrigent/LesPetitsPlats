@@ -98,26 +98,6 @@ dropdowns.forEach((dropdown) => {
   });
 }); // fin dropdowns for each
 
-// Refocus input and clear after add a tag
-// function FocusAndClearInputDropdownEventListener(type) {
-//   const dropdowns = document.querySelectorAll(".dropdown"); // récupère les 3 dropdown
-//   const searchInput = document.querySelector(`#search${type}`); // by type
-
-//   dropdowns.forEach((dropdown) => {
-//     const options = dropdown.querySelectorAll(".dropdown-menu li");
-//     options.forEach((option) => {
-//       option.addEventListener("click", () => {
-//         searchInput.focus(); // re focus input
-//         searchInput.value = ""; // clean input value
-//       });
-//     });
-//   });
-// }
-// Init first Event listener for First List
-// FocusAndClearInputDropdownEventListener("Ingredient");
-// FocusAndClearInputDropdownEventListener("Apparel");
-// FocusAndClearInputDropdownEventListener("Ustensil");
-
 // Close Dropdown after Add a Tag
 function CloseAfterFilterClickEventListener() {
   const dropdowns = document.querySelectorAll(".dropdown"); // récupère les 3 dropdown
@@ -131,9 +111,9 @@ function CloseAfterFilterClickEventListener() {
     const searchText = dropdown.querySelector(".dropdown-text");
     const searchInput = dropdown.querySelector(".dropdown-searchBar");
 
+    // close dropdown for each <li>
     options.forEach((option) => {
       option.addEventListener("click", () => {
-        // if want to close dropdown
         main.classList.remove("dropdown-main-open");
         arrow.classList.remove("dropdown-arrow-rotate"); // arrow animation
         menu.classList.remove("dropdown-menu-open"); // close menu

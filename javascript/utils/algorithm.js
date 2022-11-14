@@ -4,16 +4,14 @@
 
 // Déclenché a l'ajout d'un Tag
 function searchRecipeWithAllTags() {
-  const TagsArray = getTagsList();
-  //   console.clear();
-  //   console.log("Tags Array", TagsArray);
+  const tagsArray = getTagsList();
 
   // L'ajout de tag reset cette valeur
   let previousTagSearch = "";
 
-  for (let i = 0; i < TagsArray.length; i++) {
-    const searchValue = TagsArray[i].name.toLowerCase();
-    const searchType = TagsArray[i].type;
+  for (let i = 0; i < tagsArray.length; i++) {
+    const searchValue = tagsArray[i].name.toLowerCase();
+    const searchType = tagsArray[i].type;
     const errorMsg = document.querySelector(".section-recipes-error");
 
     if (i == 0) {
@@ -25,7 +23,6 @@ function searchRecipeWithAllTags() {
       } else {
         errorMsg.style.display = "none";
       }
-
       // console.log("/// i=" + i);
       // console.log("Search Result", previousTagSearch);
     }
@@ -45,7 +42,6 @@ function searchRecipeWithAllTags() {
 
       // console.log("/// i=" + i);
       // console.log("New Result", previousTagSearch);
-      // console.log(`Search ${searchValue} (i) in ${TagsArray[i - 1].name} (i-1) `);
     }
   }
   return previousTagSearch;
@@ -55,53 +51,49 @@ function searchRecipeWithAllTags() {
 
 function searchRecipeWithAlgorithm() {
   // reset valeur au début de la fonction et la return à la fin
-  let GlobalSearchResult = "";
+  let algoSearchResult = "";
 
   // get input value
   const searchBar = document.getElementById("mainSearchBar");
   const searchValue = searchBar.value.toLowerCase();
-  const TagsArray = getTagsList();
+  const tagsArray = getTagsList();
   const errorMsg = document.querySelector(".section-recipes-error");
 
-  // if pas de recherche via tag //
-  if (TagsArray == "") {
-    GlobalSearchResult = searchRecipe(searchValue, "mainbar");
+  // if pas de tag existant
+  if (tagsArray == "") {
+    algoSearchResult = searchRecipe(searchValue, "mainbar");
     // Toogle Msg if no result
-    if (GlobalSearchResult == "") {
+    if (algoSearchResult == "") {
       errorMsg.style.display = "flex";
     } else {
       errorMsg.style.display = "none";
     }
   }
-  //   if recherche déjà existante via tag
-  if (TagsArray != "") {
+  //   if recherche existante via tag
+  if (tagsArray != "") {
     const tagSearch = searchRecipeWithAllTags(); // get tagSearch result
-    GlobalSearchResult = searchRecipeWithPreviousResults(
+    algoSearchResult = searchRecipeWithPreviousResults(
       tagSearch,
       searchValue,
       "mainbar"
     );
     // Toogle Msg if no result
-    if (GlobalSearchResult == "") {
+    if (algoSearchResult == "") {
       errorMsg.style.display = "flex";
     } else {
       errorMsg.style.display = "none";
     }
   }
-  // Refresh Ingredients Filter List with results
-  RefreshIngredientsList(GlobalSearchResult);
-  EventListenerForIngredientTagCreation();
-  //   FocusAndClearInputDropdownEventListener("Ingredient");
-  // Refresh Apparels Filter List with results
-  RefreshApparelsList(GlobalSearchResult);
-  EventListenerForApparelTagCreation();
-  //   FocusAndClearInputDropdownEventListener("Apparel");
-  // Refresh Ustensils Filter List with results
-  RefreshUstensilsList(GlobalSearchResult);
-  EventListenerForUstensilTagCreation();
-  //   FocusAndClearInputDropdownEventListener("Ustensil");
+  // Refresh Filters Lists with Recipe results
+  RefreshIngredientsList(algoSearchResult);
+  RefreshApparelsList(algoSearchResult);
+  RefreshUstensilsList(algoSearchResult);
+  // Refresh Event listener for TagCreation + Close dropdown for the new list
+  EventListenerForTagCreation("ingredient");
+  EventListenerForTagCreation("apparel");
+  EventListenerForTagCreation("ustensil");
 
-  return GlobalSearchResult;
+  return algoSearchResult;
 }
 
 // Input change call the Search

@@ -1,63 +1,23 @@
 // ===== Event listener to call => CreateTag =====
 
-// init ingredients tag event listener ?
-
-// Add Ingredient Tag
-function EventListenerForIngredientTagCreation() {
-  const ingredientFilter = document.querySelectorAll(".ingredient-filter");
-  ingredientFilter.forEach((element) => {
+// Add a Tag
+function EventListenerForTagCreation(type) {
+  const typeFilter = document.querySelectorAll(`.${type}-filter`);
+  typeFilter.forEach((element) => {
     element.addEventListener("click", () => {
       const filterText = element.innerText;
       // Add Tag in HTML
-      createTag(filterText, "ingredient");
+      createTag(filterText, type);
       // Search Recipe
       searchRecipeWithAlgorithm();
-      // Refresh event listener for li after create a new list
-      // FocusAndClearInputDropdownEventListener("Ingredient");
       // Refresh Close Dropdown Event listener after add a tag
       CloseAfterFilterClickEventListener();
     });
   });
 }
-EventListenerForIngredientTagCreation();
-
-// Add Apparel Tag
-function EventListenerForApparelTagCreation() {
-  const apparelFilter = document.querySelectorAll(".apparel-filter");
-  apparelFilter.forEach((element) => {
-    element.addEventListener("click", () => {
-      const filterText = element.innerText;
-      // Add Tag in HTML
-      createTag(filterText, "apparel");
-      // Search Recipe
-      searchRecipeWithAlgorithm();
-      // Refresh event listener for li after create a new list
-      // FocusAndClearInputDropdownEventListener("Apparel");
-      // Refresh Close Dropdown Event listener after add a tag
-      CloseAfterFilterClickEventListener();
-    });
-  });
-}
-EventListenerForApparelTagCreation();
-
-// Add Ustensil Tag
-function EventListenerForUstensilTagCreation() {
-  const ustensilFilter = document.querySelectorAll(".ustensil-filter");
-  ustensilFilter.forEach((element) => {
-    element.addEventListener("click", () => {
-      const filterText = element.innerText;
-      // Add Tag in HTML
-      createTag(filterText, "ustensil");
-      // Search Recipe
-      searchRecipeWithAlgorithm();
-      // Refresh event listener for li after create a new list
-      // FocusAndClearInputDropdownEventListener("Ustensil");
-      // Refresh Close Dropdown Event listener after add a tag
-      CloseAfterFilterClickEventListener();
-    });
-  });
-}
-EventListenerForUstensilTagCreation();
+EventListenerForTagCreation("ingredient");
+EventListenerForTagCreation("apparel");
+EventListenerForTagCreation("ustensil");
 
 // ===== CreateTag ===== //
 
@@ -65,6 +25,7 @@ EventListenerForUstensilTagCreation();
 function createTag(tagName, type) {
   // console.log(tagName, type);
 
+  // === Create HTML ===
   // Main Tag div
   const tag = document.createElement("div");
   tag.classList.add("tagFilter");
@@ -76,35 +37,28 @@ function createTag(tagName, type) {
   const tagSvg = document.createElement("img");
   tagSvg.classList.add("tagFilter-svg");
   tagSvg.setAttribute("src", "assets/removeTag.svg");
-
-  // Type color
-  if (type == "ingredient") {
-    tag.classList.add("button-filter-blue");
-  }
-  if (type == "apparel") {
-    tag.classList.add("button-filter-green");
-  }
-  if (type == "ustensil") {
-    tag.classList.add("button-filter-red");
-  }
-  // Structure
+  // tag structure
   tag.appendChild(tagTxt);
   tag.appendChild(tagSvg);
 
-  // Les 3 possibles parents
+  // 3 possibles parents
   const tagSectionIngredient = document.querySelector(
     ".section-tag-ingredient"
   );
   const tagSectionApparel = document.querySelector(".section-tag-apparel");
   const tagSectionUstensil = document.querySelector(".section-tag-ustensil");
 
+  // Add Color and Inject Tag in Html
   if (type == "ingredient") {
+    tag.classList.add("button-filter-blue");
     tagSectionIngredient.appendChild(tag);
   }
   if (type == "apparel") {
+    tag.classList.add("button-filter-green");
     tagSectionApparel.appendChild(tag);
   }
   if (type == "ustensil") {
+    tag.classList.add("button-filter-red");
     tagSectionUstensil.appendChild(tag);
   }
 
@@ -113,52 +67,35 @@ function createTag(tagName, type) {
     tag.remove();
     // Search Recipe
     searchRecipeWithAlgorithm();
-    // Refresh event listener on Filter
+    // Refresh event listener on Filter list
     CloseAfterFilterClickEventListener();
   });
 }
 
 // ===== Get Tag [List] ===== //
 
-function getTagsList() {
-  const TagsArray = [];
-
-  // Add Ingredients Tags
-  const IngredientTags = document.querySelector(".section-tag-ingredient");
-  const allIngredientsTags = IngredientTags.querySelectorAll(".tagFilter");
+// == Push in tagArray by type ==
+function getTagArray(type, tagArray) {
+  // Add Tags in an Array
+  const Tags = document.querySelector(`.section-tag-${type}`);
+  const allIngredientsTags = Tags.querySelectorAll(".tagFilter");
   allIngredientsTags.forEach((tag) => {
     const tagElement = tag.querySelector(".tagFilter-txt");
     const tagObject = {
       name: tagElement.innerText.toLowerCase(),
-      type: "ingredient",
+      type: type,
     }; // create object
-    TagsArray.push(tagObject); // push in TagsArray
+    tagArray.push(tagObject); // push in tagArray
   });
-  // Add Apparels Tags
-  const ApparelsTags = document.querySelector(".section-tag-apparel");
-  const allApparelsTags = ApparelsTags.querySelectorAll(".tagFilter");
-  allApparelsTags.forEach((tag) => {
-    const tagElement = tag.querySelector(".tagFilter-txt");
-    const tagObject = {
-      name: tagElement.innerText.toLowerCase(),
-      type: "apparel",
-    }; // create object
-    TagsArray.push(tagObject); // push in TagsArray
-  });
-  // Add Ustensils Tags
-  const UstensilTags = document.querySelector(".section-tag-ustensil");
-  const allUstensilsTags = UstensilTags.querySelectorAll(".tagFilter");
-  allUstensilsTags.forEach((tag) => {
-    const tagElement = tag.querySelector(".tagFilter-txt");
-    const tagObject = {
-      name: tagElement.innerText.toLowerCase(),
-      type: "ustensil",
-    }; // create object
-    TagsArray.push(tagObject); // push in TagsArray
-  });
+}
 
-  // console.clear();
-  // console.log(TagsArray);
+// == Push all Tag in tagArray ==
+function getTagsList() {
+  const tagArray = [];
 
-  return TagsArray;
+  getTagArray("ingredient", tagArray);
+  getTagArray("apparel", tagArray);
+  getTagArray("ustensil", tagArray);
+
+  return tagArray;
 }
