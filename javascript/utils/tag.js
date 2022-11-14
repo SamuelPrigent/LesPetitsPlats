@@ -13,7 +13,9 @@ function EventListenerForIngredientTagCreation() {
       // Search Recipe
       searchRecipeWithAlgoritm();
       // Refresh event listener for li after create a new list
-      FocusAndClearInputDropdownEventListener("Ingredient");
+      // FocusAndClearInputDropdownEventListener("Ingredient");
+      // Refresh Close Dropdown Event listener after add a tag
+      CloseAfterFilterClickEventListener();
     });
   });
 }
@@ -30,7 +32,9 @@ function EventListenerForApparelTagCreation() {
       // Search Recipe
       searchRecipeWithAlgoritm();
       // Refresh event listener for li after create a new list
-      FocusAndClearInputDropdownEventListener("Apparel");
+      // FocusAndClearInputDropdownEventListener("Apparel");
+      // Refresh Close Dropdown Event listener after add a tag
+      CloseAfterFilterClickEventListener();
     });
   });
 }
@@ -47,7 +51,9 @@ function EventListenerForUstensilTagCreation() {
       // Search Recipe
       searchRecipeWithAlgoritm();
       // Refresh event listener for li after create a new list
-      FocusAndClearInputDropdownEventListener("Ustensil");
+      // FocusAndClearInputDropdownEventListener("Ustensil");
+      // Refresh Close Dropdown Event listener after add a tag
+      CloseAfterFilterClickEventListener();
     });
   });
 }
