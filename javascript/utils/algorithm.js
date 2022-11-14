@@ -110,4 +110,6 @@ const mainSearchBar = document.getElementById("mainSearchBar");
 mainSearchBar.addEventListener("input", (e) => {
   // Search Recipe
   searchRecipeWithAlgorithm();
+  // Refresh event listener on Filter
+  CloseAfterFilterClickEventListener();
 });

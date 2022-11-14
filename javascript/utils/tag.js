@@ -113,6 +113,8 @@ function createTag(tagName, type) {
     tag.remove();
     // Search Recipe
     searchRecipeWithAlgorithm();
+    // Refresh event listener on Filter
+    CloseAfterFilterClickEventListener();
   });
 }
 
