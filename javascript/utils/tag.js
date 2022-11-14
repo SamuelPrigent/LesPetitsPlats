@@ -12,6 +12,8 @@ function EventListenerForIngredientTagCreation() {
       createTag(filterText, "ingredient");
       // Search Recipe
       searchRecipeWithAlgoritm();
+      // Refresh event listener for li after create a new list
+      FocusAndClearInputDropdownEventListener("Ingredient");
     });
   });
 }
@@ -27,6 +29,8 @@ function EventListenerForApparelTagCreation() {
       createTag(filterText, "apparel");
       // Search Recipe
       searchRecipeWithAlgoritm();
+      // Refresh event listener for li after create a new list
+      FocusAndClearInputDropdownEventListener("Apparel");
     });
   });
 }
@@ -42,6 +46,8 @@ function EventListenerForUstensilTagCreation() {
       createTag(filterText, "ustensil");
       // Search Recipe
       searchRecipeWithAlgoritm();
+      // Refresh event listener for li after create a new list
+      FocusAndClearInputDropdownEventListener("Ustensil");
     });
   });
 }

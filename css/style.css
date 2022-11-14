@@ -167,6 +167,14 @@ header {
   gap: 20px;
 }
 
+.button-filter-arrow-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 38px;
+}
+
 .button-filter-arrow {
   height: 10.5px;
   transition: 0.25s;
@@ -234,9 +242,9 @@ header {
   font-family: DM Sans;
   background-color: black;
   transition: background 0.3s;
-  gap: 10px;
+  /* gap: 10px; */
   font-size: 16px;
-  padding: 11px 17px 11px;
+  padding: 11px 4px 11px 17px;
   border-radius: 5px;
   height: 56px;
   color: white;

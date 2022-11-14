@@ -99,12 +99,15 @@ function searchRecipeWithAlgoritm() {
   // Refresh Ingredients Filter List with results
   RefreshIngredientsList(mainBarSearch);
   EventListenerForIngredientTagCreation();
+  FocusAndClearInputDropdownEventListener("Ingredient");
   // Refresh Apparels Filter List with results
   RefreshApparelsList(mainBarSearch);
   EventListenerForApparelTagCreation();
+  FocusAndClearInputDropdownEventListener("Apparel");
   // Refresh Ustensils Filter List with results
   RefreshUstensilsList(mainBarSearch);
   EventListenerForUstensilTagCreation();
+  FocusAndClearInputDropdownEventListener("Ustensil");
 
   return mainBarSearch;
 }

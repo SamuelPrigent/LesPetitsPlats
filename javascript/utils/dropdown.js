@@ -9,15 +9,15 @@ dropdowns.forEach((dropdown) => {
   const dropdownWidth = dropdown;
   const select = dropdown.querySelector(".dropdown-select");
   const arrow = dropdown.querySelector(".button-filter-arrow");
+  const arrowDiv = dropdown.querySelector(".button-filter-arrow-div");
   const menu = dropdown.querySelector(".dropdown-menu");
   const main = dropdown.querySelector(".dropdown-main");
-  const options = dropdown.querySelectorAll(".dropdown-menu li");
+  // const options = dropdown.querySelectorAll(".dropdown-menu li");
   // const selected = dropdown.querySelector(".dropdown-selected");
 
   // Text and input Target
   const searchText = dropdown.querySelector(".dropdown-text");
   const searchInput = dropdown.querySelector(".dropdown-searchBar");
-
   // ID element
   const ingredientFilterList = document.querySelector("#section-ingredient");
   const apparelFilterList = document.querySelector("#section-apparel");
@@ -47,8 +47,8 @@ dropdowns.forEach((dropdown) => {
   const dropdownApparel = document.querySelector("#dropdown-apparel");
   const dropdownUstensil = document.querySelector("#dropdown-ustensil");
 
-  // === Dropdown CLICK ===
-  select.addEventListener("click", () => {
+  // === Dropdown CLICK Open/Close ===
+  arrowDiv.addEventListener("click", () => {
     // Button change
     dropdownWidth.classList.toggle("dropdown-open");
     searchText.classList.toggle("dropdown-selected-invisible");
@@ -97,23 +97,46 @@ dropdowns.forEach((dropdown) => {
     }
   });
 
-  // == Ferme le dropdown lorsque l'on selectionne une options dans la list ==
-  options.forEach((option) => {
-    option.addEventListener("click", () => {
-      main.classList.remove("dropdown-main-open");
-      arrow.classList.remove("dropdown-arrow-rotate"); // arrow animation
-      menu.classList.remove("dropdown-menu-open"); // close menu
-      select.classList.remove("dropdown-borderRadius");
-      searchText.classList.remove("dropdown-selected-invisible");
-      searchInput.classList.remove("dropdown-searchBar-visible");
-      dropdownWidth.classList.remove("dropdown-open");
-      //   select.classList.remove("dropdown-select-clicked"); // remove style on filter button
-      //   selected.innerText = option.innerText; // if we want to replace in the button
-      // Remove for all, each click & attribute active to the new target element after
-      //   options.forEach((option) => {
-      //     option.classList.remove("active");
-      //   });
-      //   option.classList.add("active");
+  // == Close dropdown lorsque l'on ajoute un Tag ==
+  // options.forEach((option) => {
+  //   option.addEventListener("click", () => {
+  // searchInput.focus(); // re focus input
+  // if want to close dropdown
+  // main.classList.remove("dropdown-main-open");
+  // arrow.classList.remove("dropdown-arrow-rotate"); // arrow animation
+  // menu.classList.remove("dropdown-menu-open"); // close menu
+  // select.classList.remove("dropdown-borderRadius");
+  // searchText.classList.remove("dropdown-selected-invisible");
+  // searchInput.classList.remove("dropdown-searchBar-visible");
+  // dropdownWidth.classList.remove("dropdown-open");
+  //
+  //   select.classList.remove("dropdown-select-clicked"); // remove style on filter button
+  //   selected.innerText = option.innerText; // if we want to replace in the button
+  // Remove for all, each click & attribute active to the new target element after
+  //   options.forEach((option) => {
+  //     option.classList.remove("active");
+  //   });
+  //   option.classList.add("active");
+  //   });
+  // });
+}); // fin dropdowns for each
+
+// Refocus input and clear after add a tag
+function FocusAndClearInputDropdownEventListener(type) {
+  const dropdowns = document.querySelectorAll(".dropdown"); // récupère les 3 dropdown
+  const searchInput = document.querySelector(`#search${type}`); // by type
+
+  dropdowns.forEach((dropdown) => {
+    const options = dropdown.querySelectorAll(".dropdown-menu li");
+    options.forEach((option) => {
+      option.addEventListener("click", () => {
+        searchInput.focus(); // re focus input
+        searchInput.value = ""; // clean input value
+      });
     });
   });
-}); // fin dropdowns for each
+}
+// Init first Event listener for First List
+FocusAndClearInputDropdownEventListener("Ingredient");
+FocusAndClearInputDropdownEventListener("Apparel");
+FocusAndClearInputDropdownEventListener("Ustensil");
