@@ -256,6 +256,8 @@ AllSearchBar.forEach((element) => {
 //
 // ===== Actions de Recherche par Type ======
 
+// ** arraymethod branch with "forEach" instead of "for" **
+
 // === Première Recherche ===
 
 function searchRecipe(searchValue, searchType) {
