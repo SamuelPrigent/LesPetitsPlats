@@ -256,7 +256,7 @@ AllSearchBar.forEach((element) => {
 //
 // ===== Actions de Recherche par Type ======
 
-// ** arraymethod branch with "forEach" **
+// ** Arraymethod branch with .filter **
 
 // === function check for filter ===
 
