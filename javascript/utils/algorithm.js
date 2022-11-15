@@ -54,7 +54,7 @@ function searchRecipeWithAlgorithm() {
   const tagsArray = getTagsList();
   const errorMsg = document.querySelector(".section-recipes-error");
 
-  // if pas de tag existant
+  // == if pas de tag existant ==
   if (tagsArray == "") {
     algoSearchResult = searchRecipe(searchValue, "mainbar");
     // Toogle Msg if no result
@@ -64,9 +64,14 @@ function searchRecipeWithAlgorithm() {
       errorMsg.style.display = "none";
     }
   }
-  //   if recherche existante via tag
-  if (tagsArray != "") {
-    const tagSearch = searchRecipeWithAllTags(); // get tagSearch result
+  // == if recherche existante via tag ==
+  // if searchValue < 3
+  if (tagsArray != "" && searchValue.length < 3) {
+    algoSearchResult = searchRecipeWithAllTags();
+  }
+  // if searchValue >= 3
+  if (tagsArray != "" && searchValue.length >= 3) {
+    const tagSearch = searchRecipeWithAllTags();
     algoSearchResult = searchRecipeWithPreviousResults(
       tagSearch,
       searchValue,
