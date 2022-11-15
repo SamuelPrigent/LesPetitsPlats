@@ -371,6 +371,7 @@ function checkMainbar(searchValue, item) {
   if (searchValue.length < 3) {
     // reshow all after hide it
     item.style.display = "";
+    return item;
   }
 }
 
