@@ -256,7 +256,7 @@ AllSearchBar.forEach((element) => {
 //
 // ===== Actions de Recherche par Type ======
 
-// ** branch "native" avec des boucles native "for" **
+// ** native branch avec des boucles native "for" **
 
 // === Première Recherche ===
 
