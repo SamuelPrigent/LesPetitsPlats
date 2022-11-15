@@ -65,7 +65,13 @@ function searchRecipeWithAlgorithm() {
     }
   }
   //   if recherche existante via tag
-  if (tagsArray != "") {
+  // == if recherche existante via tag ==
+  // if searchValue < 3
+  if (tagsArray != "" && searchValue.length < 3) {
+    algoSearchResult = searchRecipeWithAllTags();
+  }
+  // if searchValue >= 3
+  if (tagsArray != "" && searchValue.length >= 3) {
     const tagSearch = searchRecipeWithAllTags(); // get tagSearch result
     algoSearchResult = searchRecipeWithPreviousResults(
       tagSearch,
