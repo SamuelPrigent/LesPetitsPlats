@@ -256,7 +256,7 @@ AllSearchBar.forEach((element) => {
 //
 // ===== Actions de Recherche par Type ======
 
-// ** native branch with "for" instead of "forEach" **
+// ** branch "native" avec des boucles native "for" **
 
 // === Première Recherche ===
 
@@ -270,8 +270,11 @@ function searchRecipe(searchValue, searchType) {
   const TagSearchResultElement = [];
 
   // Hide/Show Tag + Create an array of [elements] w/ those who mach
-  recipeArray.forEach((element) => {
-    //
+
+  for (let i = 0; i < recipeArray.length; i++) {
+    const element = recipeArray[i];
+    // console.log(element);
+
     // for Ingredient Tag
     if (searchType == "ingredient") {
       const textIngredient = element
@@ -400,7 +403,7 @@ function searchRecipe(searchValue, searchType) {
         TagSearchResultElement.push(element); // here ?
       }
     }
-  });
+  }
 
   return TagSearchResultElement;
 }
@@ -415,8 +418,10 @@ function searchRecipeWithPreviousResults(
   const TagSearchResultElement = [];
 
   // Hide/Show Tag + Create an array of [elements] w/ those who mach
-  previousTagSearchResult.forEach((element) => {
-    //
+  for (let i = 0; i < previousTagSearchResult.length; i++) {
+    const element = previousTagSearchResult[i];
+    // console.log(element);
+
     // for Ingredient Tag
     if (searchType == "ingredient") {
       const textIngredient = element
@@ -544,7 +549,7 @@ function searchRecipeWithPreviousResults(
         TagSearchResultElement.push(element);
       }
     }
-  });
+  }
 
   return TagSearchResultElement;
 }

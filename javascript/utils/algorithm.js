@@ -64,9 +64,14 @@ function searchRecipeWithAlgorithm() {
       errorMsg.style.display = "none";
     }
   }
-  //   if recherche existante via tag
-  if (tagsArray != "") {
-    const tagSearch = searchRecipeWithAllTags(); // get tagSearch result
+  // if recherche existante via tag
+  // si searchValue.length < 3 on ne fait pas recherche mainbar
+  if (tagsArray != "" && searchValue.length < 3) {
+    algoSearchResult = searchRecipeWithAllTags();
+  }
+  // si searchValue.length >= 3 on affine encore avec la mainbar
+  if (tagsArray != "" && searchValue.length >= 3) {
+    const tagSearch = searchRecipeWithAllTags();
     algoSearchResult = searchRecipeWithPreviousResults(
       tagSearch,
       searchValue,
