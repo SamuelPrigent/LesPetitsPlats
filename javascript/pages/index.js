@@ -256,7 +256,7 @@ AllSearchBar.forEach((element) => {
 //
 // ===== Actions de Recherche par Type ======
 
-// ** master branch with forEach and Array push **
+// ** master  with forEach + Array push **
 
 // === Première Recherche ===
 
