@@ -65,7 +65,7 @@ function searchRecipeWithAlgorithm() {
     }
   }
   // == if recherche existante via tag ==
-  // if searchValue < 3
+  // if searchValue < à 3
   if (tagsArray != "" && searchValue.length < 3) {
     algoSearchResult = searchRecipeWithAllTags();
   }
