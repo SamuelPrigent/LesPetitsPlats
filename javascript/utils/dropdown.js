@@ -99,7 +99,7 @@ dropdowns.forEach((dropdown) => {
 }); // fin dropdowns for each
 
 // Close Dropdown after Add a Tag
-function CloseAfterFilterClickEventListener() {
+function closeAfterFilterClickEventListener() {
   const dropdowns = document.querySelectorAll(".dropdown"); // récupère les 3 dropdown
   dropdowns.forEach((dropdown) => {
     const options = dropdown.querySelectorAll(".dropdown-menu li");
@@ -125,4 +125,4 @@ function CloseAfterFilterClickEventListener() {
     });
   });
 }
-CloseAfterFilterClickEventListener();
+closeAfterFilterClickEventListener();

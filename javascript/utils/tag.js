@@ -1,20 +1,20 @@
 // ===== Event listener to call => CreateTag =====
 
 // Event listener for Tag Creation
-function EventListenerForTagCreation(type) {
+function eventListenerForTagCreation(type) {
   const typeFilter = document.querySelectorAll(`.${type}-filter`);
   typeFilter.forEach((element) => {
     element.addEventListener("click", () => {
       const filterText = element.innerText;
       createTag(filterText, type); // Add Tag in HTML
       searchRecipeWithAlgorithm(); // Search Recipe
-      CloseAfterFilterClickEventListener(); // Close Dropdown Event listener
+      closeAfterFilterClickEventListener(); // Close Dropdown Event listener
     });
   });
 }
-EventListenerForTagCreation("ingredient");
-EventListenerForTagCreation("apparel");
-EventListenerForTagCreation("ustensil");
+eventListenerForTagCreation("ingredient");
+eventListenerForTagCreation("apparel");
+eventListenerForTagCreation("ustensil");
 
 // ===== CreateTag ===== //
 
@@ -65,7 +65,7 @@ function createTag(tagName, type) {
     // Search Recipe
     searchRecipeWithAlgorithm();
     // Refresh event listener on Filter list
-    CloseAfterFilterClickEventListener();
+    closeAfterFilterClickEventListener();
   });
 }
 
@@ -74,8 +74,8 @@ function createTag(tagName, type) {
 // == Push in tagArray by type ==
 function getTagArray(type, tagArray) {
   // Add Tags in an Array
-  const Tags = document.querySelector(`.section-tag-${type}`);
-  const allIngredientsTags = Tags.querySelectorAll(".tagFilter");
+  const tags = document.querySelector(`.section-tag-${type}`);
+  const allIngredientsTags = tags.querySelectorAll(".tagFilter");
   allIngredientsTags.forEach((tag) => {
     const tagElement = tag.querySelector(".tagFilter-txt");
     const tagObject = {

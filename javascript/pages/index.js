@@ -36,36 +36,36 @@ function getIngredientsList() {
 // Create [Ingrédients] with Search Result
 function getIngredientsListWithSearchResult(searchResult) {
   // console.log(searchResult);
-  let NewIngredientListWithDouble = [];
-  let NewIngredientListWithoutDouble = [];
-  let NewIngredientListArray = [];
+  let newIngredientListWithDouble = [];
+  let newIngredientListWithoutDouble = [];
+  let newIngredientListArray = [];
   //
   searchResult.forEach((element) => {
     // Ingredients Div in One Card
-    const IngredientDiv = element.querySelectorAll(
+    const ingredientDiv = element.querySelectorAll(
       ".card-recipes-txt-bottom-left-bold"
     );
-    IngredientDiv.forEach((element) => {
-      const OneIngredientOfList = element.innerText; // pas besoins de lowercase
-      NewIngredientListWithDouble.push(OneIngredientOfList);
+    ingredientDiv.forEach((element) => {
+      const oneIngredientOfList = element.innerText; // pas besoins de lowercase
+      newIngredientListWithDouble.push(oneIngredientOfList);
     });
     // Après avoir parcouru toute les div et fait la liste
-    NewIngredientListWithoutDouble = new Set(NewIngredientListWithDouble); // Remove Double
-    NewIngredientListArray = Array.from(NewIngredientListWithoutDouble);
-    NewIngredientListArray.sort((a, b) => (a > b ? 1 : -1));
+    newIngredientListWithoutDouble = new Set(newIngredientListWithDouble); // Remove Double
+    newIngredientListArray = Array.from(newIngredientListWithoutDouble);
+    newIngredientListArray.sort((a, b) => (a > b ? 1 : -1));
   });
   // Liste total des ingredients avec double
-  // console.log(NewIngredientListWithDouble);
-  // console.log(NewIngredientListArray);
+  // console.log(newIngredientListWithDouble);
+  // console.log(newIngredientListArray);
 
-  return NewIngredientListArray;
+  return newIngredientListArray;
 }
 
 // === Liste des appareils [10] ===
 function getApparelsList() {
-  const ApparelCombinaison = recipes.map((e) => e.appliance);
-  const ApparelValues = ApparelCombinaison.flat(1); // all values with double
-  const newApparelList = Array.from(ApparelValues);
+  const apparelCombinaison = recipes.map((e) => e.appliance);
+  const apparelValues = apparelCombinaison.flat(1); // all values with double
+  const newApparelList = Array.from(apparelValues);
   const newApparelListWithoutUndefined = newApparelList.filter((element) => {
     return element !== undefined;
   });
@@ -74,83 +74,83 @@ function getApparelsList() {
       return element.toLowerCase();
     }
   );
-  const ApparelList = new Set(newApparelListLowercase); // Remove Double
-  const ApparelsArray = Array.from(ApparelList);
-  ApparelsArray.sort((a, b) => (a > b ? 1 : -1));
-  // console.log(ApparelsArray);
-  return ApparelsArray;
+  const apparelList = new Set(newApparelListLowercase); // Remove Double
+  const apparelsArray = Array.from(apparelList);
+  apparelsArray.sort((a, b) => (a > b ? 1 : -1));
+  // console.log(apparelsArray);
+  return apparelsArray;
 }
 
 // Create [Apparel] with Search Result
 function getApparelsListWithSearchResult(searchResult) {
   // console.log(searchResult);
-  let NewApparelListWithDouble = [];
-  let NewApparelListWithoutDouble = [];
-  let NewApparelListArray = [];
+  let newApparelListWithDouble = [];
+  let newApparelListWithoutDouble = [];
+  let newApparelListArray = [];
   //
   searchResult.forEach((element) => {
     // Apparel Div in One Card
     if (element.dataset.apparellist) {
-      const ApparelDiv = element.dataset.apparellist.toLowerCase();
-      const ApparelList = ApparelDiv.split(",");
+      const apparelDiv = element.dataset.apparellist.toLowerCase();
+      const apparelList = apparelDiv.split(",");
 
-      ApparelList.forEach((element) => {
-        NewApparelListWithDouble.push(element);
+      apparelList.forEach((element) => {
+        newApparelListWithDouble.push(element);
       });
       // Après avoir parcouru toute les div et fait la liste
-      NewApparelListWithoutDouble = new Set(NewApparelListWithDouble); // Remove Double
-      NewApparelListArray = Array.from(NewApparelListWithoutDouble);
-      NewApparelListArray.sort((a, b) => (a > b ? 1 : -1));
+      newApparelListWithoutDouble = new Set(newApparelListWithDouble); // Remove Double
+      newApparelListArray = Array.from(newApparelListWithoutDouble);
+      newApparelListArray.sort((a, b) => (a > b ? 1 : -1));
     }
   });
   // Liste total des ingredients avec double
   // console.log(NewApparelListWithDouble);
   // console.log(NewApparelListArray);
 
-  return NewApparelListArray;
+  return newApparelListArray;
 }
 
 // === Listes des ustensils [22] ===
 function getUstensilsList() {
-  const UstensilsCombinaison = recipes.map((e) => e.ustensils);
-  const UstensilsValues = UstensilsCombinaison.flat(1); // all values with double
-  const UstensilsOnlyArrayLowerCase = UstensilsValues.map((element) => {
+  const ustensilsCombinaison = recipes.map((e) => e.ustensils);
+  const ustensilsValues = ustensilsCombinaison.flat(1); // all values with double
+  const ustensilsOnlyArrayLowerCase = ustensilsValues.map((element) => {
     return element.toLowerCase();
   });
-  const UstensilsList = new Set(UstensilsOnlyArrayLowerCase); // Remove Double
-  const UstensilsArray = Array.from(UstensilsList);
-  UstensilsArray.sort((a, b) => (a > b ? 1 : -1));
+  const ustensilsList = new Set(ustensilsOnlyArrayLowerCase); // Remove Double
+  const ustensilsArray = Array.from(ustensilsList);
+  ustensilsArray.sort((a, b) => (a > b ? 1 : -1));
   // console.log(UstensilsArray);
-  return UstensilsArray;
+  return ustensilsArray;
 }
 
 // Create [Ustensils] with Search Result
 function getUstensilsListWithSearchResult(searchResult) {
   // console.log(searchResult);
-  let NewUstensilListWithDouble = [];
-  let NewUstensilListWithoutDouble = [];
-  let NewUstensilListArray = [];
+  let newUstensilListWithDouble = [];
+  let newUstensilListWithoutDouble = [];
+  let newUstensilListArray = [];
   //
   searchResult.forEach((element) => {
     if (element.dataset.ustensillist) {
       // Ustensil Div in One Card
-      const UstensilDiv = element.dataset.ustensillist.toLowerCase();
-      const UstensilList = UstensilDiv.split(",");
+      const ustensilDiv = element.dataset.ustensillist.toLowerCase();
+      const ustensilList = ustensilDiv.split(",");
 
-      UstensilList.forEach((element) => {
-        NewUstensilListWithDouble.push(element);
+      ustensilList.forEach((element) => {
+        newUstensilListWithDouble.push(element);
       });
       // Après avoir parcouru toute les div et fait la liste
-      NewUstensilListWithoutDouble = new Set(NewUstensilListWithDouble); // Remove Double
-      NewUstensilListArray = Array.from(NewUstensilListWithoutDouble);
-      NewUstensilListArray.sort((a, b) => (a > b ? 1 : -1));
+      newUstensilListWithoutDouble = new Set(newUstensilListWithDouble); // Remove Double
+      newUstensilListArray = Array.from(newUstensilListWithoutDouble);
+      newUstensilListArray.sort((a, b) => (a > b ? 1 : -1));
     }
   });
   // Liste total des ingredients avec double
   // console.log(NewUstensilListWithDouble);
   // console.log(NewUstensilListArray);
 
-  return NewUstensilListArray;
+  return newUstensilListArray;
 }
 
 //
@@ -159,22 +159,22 @@ function getUstensilsListWithSearchResult(searchResult) {
 // === Create <li> in Dropdown with All Recipe ===
 
 // Create Ingredients List
-const IngredientsArray = getIngredientsList();
-IngredientsArray.forEach((element) => {
+const ingredientsArray = getIngredientsList();
+ingredientsArray.forEach((element) => {
   const newFilter = getIngredientFilter(element);
   ingredientSection.appendChild(newFilter);
 });
 
 // Create Apparel List
-const ApparelsArray = getApparelsList();
-ApparelsArray.forEach((element) => {
+const apparelsArray = getApparelsList();
+apparelsArray.forEach((element) => {
   const newFilter = getApparelFilter(element);
   apparelSection.appendChild(newFilter);
 });
 
 // Create Ustensils List
-const UstensilsArray = getUstensilsList();
-UstensilsArray.forEach((element) => {
+const ustensilsArray = getUstensilsList();
+ustensilsArray.forEach((element) => {
   const newFilter = getUstensilFilter(element);
   ustensilSection.appendChild(newFilter);
 });
@@ -182,30 +182,30 @@ UstensilsArray.forEach((element) => {
 // === Create <li> in Dropdown from searchResult ===
 
 // Refresh Ingredients List w/ searchResult (from global algortihm)
-function RefreshIngredientsList(searchResult) {
+function refreshIngredientsList(searchResult) {
   ingredientSection.innerHTML = ""; // vide l'ancienne liste
-  const NewIngredientsArray = getIngredientsListWithSearchResult(searchResult);
-  NewIngredientsArray.forEach((element) => {
+  const newIngredientsArray = getIngredientsListWithSearchResult(searchResult);
+  newIngredientsArray.forEach((element) => {
     const newFilter = getIngredientFilter(element);
     ingredientSection.appendChild(newFilter);
   });
 }
 
 // Refresh Apparel List w/ searchResult (from global algortihm)
-function RefreshApparelsList(searchResult) {
+function refreshApparelsList(searchResult) {
   apparelSection.innerHTML = ""; // vide l'ancienne liste
-  const NewApparelsArray = getApparelsListWithSearchResult(searchResult);
-  NewApparelsArray.forEach((element) => {
+  const newApparelsArray = getApparelsListWithSearchResult(searchResult);
+  newApparelsArray.forEach((element) => {
     const newFilter = getApparelFilter(element);
     apparelSection.appendChild(newFilter);
   });
 }
 
 // Refresh Ustensils List w/ searchResult (from global algortihm)
-function RefreshUstensilsList(searchResult) {
+function refreshUstensilsList(searchResult) {
   ustensilSection.innerHTML = ""; // vide l'ancienne liste
-  const NewUstensilsArray = getUstensilsListWithSearchResult(searchResult);
-  NewUstensilsArray.forEach((element) => {
+  const newUstensilsArray = getUstensilsListWithSearchResult(searchResult);
+  newUstensilsArray.forEach((element) => {
     const newFilter = getUstensilFilter(element);
     ustensilSection.appendChild(newFilter);
   });
