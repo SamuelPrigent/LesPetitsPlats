@@ -86,13 +86,13 @@ function searchRecipeWithAlgorithm() {
     }
   }
   // Refresh Filters Lists with Recipe results
-  RefreshIngredientsList(algoSearchResult);
-  RefreshApparelsList(algoSearchResult);
-  RefreshUstensilsList(algoSearchResult);
+  refreshIngredientsList(algoSearchResult);
+  refreshApparelsList(algoSearchResult);
+  refreshUstensilsList(algoSearchResult);
   // Refresh Event listener for TagCreation + Close dropdown for the new list
-  EventListenerForTagCreation("ingredient");
-  EventListenerForTagCreation("apparel");
-  EventListenerForTagCreation("ustensil");
+  eventListenerForTagCreation("ingredient");
+  eventListenerForTagCreation("apparel");
+  eventListenerForTagCreation("ustensil");
 
   return algoSearchResult;
 }
@@ -104,5 +104,5 @@ mainSearchBar.addEventListener("input", (e) => {
   // Search Recipe
   searchRecipeWithAlgorithm();
   // Refresh event listener on Filter
-  CloseAfterFilterClickEventListener();
+  closeAfterFilterClickEventListener();
 });
