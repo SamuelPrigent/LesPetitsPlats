@@ -20,17 +20,17 @@ recipes.forEach((recipes) => {
 
 // === Listes des ingrédients [112] ===
 function getIngredientsList() {
-  const IngredientsCombinaison = recipes.map((e) => e.ingredients); // all combinaison (recipes)
-  const IngredientsValues = IngredientsCombinaison.flat(1); // all ingredients.array + qty + unit
-  const IngredientOnlyArray = IngredientsValues.map((e) => e.ingredient); // all ingredient with double
-  const IngredientOnlyArrayLowerCase = IngredientOnlyArray.map((element) => {
+  const ingredientsCombinaison = recipes.map((e) => e.ingredients); // all combinaison (recipes)
+  const ingredientsValues = ingredientsCombinaison.flat(1); // all ingredients.array + qty + unit
+  const ingredientOnlyArray = ingredientsValues.map((e) => e.ingredient); // all ingredient with double
+  const ingredientOnlyArrayLowerCase = ingredientOnlyArray.map((element) => {
     return element.toLowerCase();
   });
-  const IngredientsList = new Set(IngredientOnlyArrayLowerCase); // Remove Double
-  const IngredientsArray = Array.from(IngredientsList);
-  IngredientsArray.sort((a, b) => (a > b ? 1 : -1));
-  // console.log(IngredientsArray);
-  return IngredientsArray;
+  const ingredientsList = new Set(ingredientOnlyArrayLowerCase); // Remove Double
+  const ingredientsArray = Array.from(ingredientsList);
+  ingredientsArray.sort((a, b) => (a > b ? 1 : -1));
+  // console.log(ingredientsArray);
+  return ingredientsArray;
 }
 
 // Create [Ingrédients] with Search Result
