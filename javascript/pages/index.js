@@ -376,15 +376,18 @@ function searchRecipe(searchValue, searchType) {
         .normalize("NFD")
         .replace(/[\u0300-\u036f]/g, "");
 
+      // searchValue without space
+      const searchValueWithoutSpace = searchValue.trim();
+
       // if Value >= 3
-      if (searchValue.length >= 3) {
+      if (searchValueWithoutSpace.length >= 3) {
         if (
-          textTitle.includes(searchValue) ||
-          textDsc.includes(searchValue) ||
-          textTitleSimple.includes(searchValue) ||
-          textDscSimple.includes(searchValue) ||
-          textIngredient.includes(searchValue) ||
-          textIngredientSimple.includes(searchValue)
+          textTitle.includes(searchValueWithoutSpace) ||
+          textDsc.includes(searchValueWithoutSpace) ||
+          textTitleSimple.includes(searchValueWithoutSpace) ||
+          textDscSimple.includes(searchValueWithoutSpace) ||
+          textIngredient.includes(searchValueWithoutSpace) ||
+          textIngredientSimple.includes(searchValueWithoutSpace)
         ) {
           // reshow it after hide it
           element.style.display = "";
@@ -396,7 +399,7 @@ function searchRecipe(searchValue, searchType) {
         }
       }
       // if Value < 3 => Show all
-      if (searchValue.length < 3) {
+      if (searchValueWithoutSpace.length < 3) {
         // reshow all after hide it
         element.style.display = "";
         // Create Array with Element who match
@@ -523,15 +526,18 @@ function searchRecipeWithPreviousResults(
         .normalize("NFD")
         .replace(/[\u0300-\u036f]/g, "");
 
+      // searchValue without space
+      const searchValueWithoutSpace = searchValue.trim();
+
       // search.length >= 3 // fonctionne aussi pour les tag
-      if (searchValue.length >= 3) {
+      if (searchValueWithoutSpace.length >= 3) {
         if (
-          textTitle.includes(searchValue) ||
-          textDsc.includes(searchValue) ||
-          textTitleSimple.includes(searchValue) ||
-          textDscSimple.includes(searchValue) ||
-          textIngredient.includes(searchValue) ||
-          textIngredientSimple.includes(searchValue)
+          textTitle.includes(searchValueWithoutSpace) ||
+          textDsc.includes(searchValueWithoutSpace) ||
+          textTitleSimple.includes(searchValueWithoutSpace) ||
+          textDscSimple.includes(searchValueWithoutSpace) ||
+          textIngredient.includes(searchValueWithoutSpace) ||
+          textIngredientSimple.includes(searchValueWithoutSpace)
         ) {
           // reshow it after hide it
           element.style.display = "";
@@ -542,7 +548,7 @@ function searchRecipeWithPreviousResults(
           element.style.display = "none";
         }
       }
-      if (searchValue.length < 3) {
+      if (searchValueWithoutSpace.length < 3) {
         // reshow all after hide it
         element.style.display = "";
         // Create Array with Element who match
