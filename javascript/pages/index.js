@@ -327,7 +327,9 @@ function checkUstensilTag(searchValue, item) {
 }
 
 function checkMainbar(searchValue, item) {
-  if (searchValue.length >= 3) {
+  const searchValueWithoutSpace = searchValue.trim();
+
+  if (searchValueWithoutSpace.length >= 3) {
     // Titre
     const textTitle = item
       .querySelector(".card-recipes-txt-top-left")
@@ -353,12 +355,12 @@ function checkMainbar(searchValue, item) {
       .replace(/[\u0300-\u036f]/g, "");
 
     if (
-      textTitle.includes(searchValue) ||
-      textDsc.includes(searchValue) ||
-      textTitleSimple.includes(searchValue) ||
-      textDscSimple.includes(searchValue) ||
-      textIngredient.includes(searchValue) ||
-      textIngredientSimple.includes(searchValue)
+      textTitle.includes(searchValueWithoutSpace) ||
+      textDsc.includes(searchValueWithoutSpace) ||
+      textTitleSimple.includes(searchValueWithoutSpace) ||
+      textDscSimple.includes(searchValueWithoutSpace) ||
+      textIngredient.includes(searchValueWithoutSpace) ||
+      textIngredientSimple.includes(searchValueWithoutSpace)
     ) {
       // show
       item.style.display = "";
@@ -368,7 +370,7 @@ function checkMainbar(searchValue, item) {
       item.style.display = "none";
     }
   }
-  if (searchValue.length < 3) {
+  if (searchValueWithoutSpace.length < 3) {
     // reshow all after hide it
     item.style.display = "";
     return item;
