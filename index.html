@@ -1,179 +1,127 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="utf-8" />
-    <!-- CSS -->
-    <link href="css/reset.css" rel="stylesheet" type="text/css" />
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <!-- Font -->
-    <link
-      href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@200;300;400;500;600&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Icons Fontawesome -->
-    <script
-      src="https://kit.fontawesome.com/5f5fe7de0e.js"
-      defer
-      crossorigin="anonymous"
-    ></script>
-    <!-- Title -->
-    <link rel="icon" type="image/png" href="assets/logo.svg" />
-    <title>Les petits plats</title>
-  </head>
-  <!-- Body -->
-  <body>
-    <!-- Header -->
-    <header>
-      <img class="header-logo" src="assets/logo.svg" alt="logo" />
-      <h1 class="header-title">Les petits plats</h1>
-    </header>
-    <!-- Main  -->
-    <main id="main">
-      <div class="div-search-bar">
-        <input
-          id="mainSearchBar"
-          placeholder="Rechercher une recette"
-          class="search-bar"
-          type="text"
-        />
-        <div class="search-icon-div">
-          <img class="search-icon" src="assets/loupe.svg" alt="loupe" />
-        </div>
-      </div>
-      <!-- Section des tag de recherche -->
-      <div class="section-tag">
-        <div class="section-tag-ingredient"></div>
-        <div class="section-tag-apparel"></div>
-        <div class="section-tag-ustensil"></div>
-      </div>
-      <div class="div-filter">
-        <!-- Dropdown Ingrédients -->
-        <div id="dropdown-ingredient" tabindex="0" class="dropdown">
-          <div id="selectIngredient" class="dropdown-select button-filter-blue">
-            <div class="dropdown-selected">
-              <div id="searchIngredientText" class="dropdown-text">
-                Ingrédients
-              </div>
-              <input
-                autocomplete="off"
-                id="searchIngredient"
-                placeholder="Rechercher un ingrédient"
-                class="dropdown-searchBar button-filter-blue"
-                type="text"
-              />
-            </div>
-            <div class="button-filter-arrow-div">
-              <img
-                alt="arrow ingredient button"
-                id="arrow-ingredient"
-                class="button-filter-arrow"
-                src="assets/arrowDown.svg"
-              />
-            </div>
-          </div>
-          <div id="main-ingredient" class="dropdown-main button-filter-blue">
-            <ul
-              id="section-ingredient"
-              class="dropdown-menu button-filter-blue"
-            ></ul>
-          </div>
-        </div>
-        <!-- Fin -->
-        <!-- Dropdown Appareils -->
-        <div id="dropdown-apparel" tabindex="0" class="dropdown">
-          <div id="selectApparel" class="dropdown-select button-filter-green">
-            <div class="dropdown-selected">
-              <div id="searchApparelText" class="dropdown-text">Appareils</div>
-              <input
-                autocomplete="off"
-                id="searchApparel"
-                placeholder="Rechercher un appareil"
-                class="dropdown-searchBar button-filter-green"
-                type="text"
-              />
-            </div>
-            <div class="button-filter-arrow-div">
-              <img
-                alt="arrow apparel button"
-                id="arrow-apparel"
-                class="button-filter-arrow"
-                src="assets/arrowDown.svg"
-              />
-            </div>
-          </div>
-          <div id="main-apparel" class="dropdown-main button-filter-green">
-            <ul
-              id="section-apparel"
-              class="dropdown-menu button-filter-green"
-            ></ul>
-          </div>
-        </div>
-        <!-- Fin -->
-        <!-- Dropdown Ustensiles -->
-        <div id="dropdown-ustensil" tabindex="0" class="dropdown">
-          <div id="selectUstensil" class="dropdown-select button-filter-red">
-            <div class="dropdown-selected">
-              <div id="searchUstensilText" class="dropdown-text">
-                Ustensiles
-              </div>
-              <input
-                autocomplete="off"
-                id="searchUstensil"
-                placeholder="Rechercher un ustensile"
-                class="dropdown-searchBar button-filter-red"
-                type="text"
-              />
-            </div>
-            <div class="button-filter-arrow-div">
-              <img
-                alt="arrow ustensil button"
-                id="arrow-ustensil"
-                class="button-filter-arrow"
-                src="assets/arrowDown.svg"
-              />
-            </div>
-          </div>
-          <div id="main-ustensil" class="dropdown-main button-filter-red">
-            <ul
-              id="section-ustensil"
-              class="dropdown-menu button-filter-red"
-            ></ul>
-          </div>
-        </div>
-        <!-- Fin -->
-      </div>
 
-      <div class="section-recipes">
-        <!-- Recipes Card Created Here ... -->
+<head>
+  <meta charset="utf-8" />
+  <!-- CSS -->
+  <link href="css/reset.css" rel="stylesheet" type="text/css" />
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@200;300;400;500;600&display=swap"
+    rel="stylesheet" />
+  <!-- Icons Fontawesome -->
+  <script src="https://kit.fontawesome.com/5f5fe7de0e.js" defer crossorigin="anonymous"></script>
+  <!-- Title -->
+  <link rel="icon" type="image/png" href="assets/logo.svg" />
+  <title>Les petits plats</title>
+</head>
+<!-- Body -->
+
+<body>
+  <!-- Header -->
+  <header>
+    <img class="header-logo" src="assets/logo.svg" alt="logo" />
+    <h1 class="header-title">Les petits plats</h1>
+  </header>
+  <!-- Main  -->
+  <main id="main">
+    <div class="div-search-bar">
+      <input id="mainSearchBar" placeholder="Rechercher une recette" class="search-bar" type="text" />
+      <div class="search-icon-div">
+        <img class="search-icon" src="assets/loupe.svg" alt="loupe" />
       </div>
-      <div class="section-recipes-error">
-        <!-- Error msg here ... -->
-        Aucune recette ne correspond à la recherche
-        <img
-          alt="error no recipes"
-          class="section-recipes-error-svg"
-          src="assets/NoData.svg"
-        />
+    </div>
+    <!-- Section des tag de recherche -->
+    <div class="section-tag">
+      <div class="section-tag-ingredient"></div>
+      <div class="section-tag-apparel"></div>
+      <div class="section-tag-ustensil"></div>
+    </div>
+    <div class="div-filter">
+      <!-- Dropdown Ingrédients -->
+      <div id="dropdown-ingredient" tabindex="0" class="dropdown">
+        <div id="selectIngredient" class="dropdown-select button-filter-blue">
+          <div class="dropdown-selected">
+            <div id="searchIngredientText" class="dropdown-text">
+              Ingrédients
+            </div>
+            <input autocomplete="off" id="searchIngredient" placeholder="Rechercher un ingrédient"
+              class="dropdown-searchBar button-filter-blue" type="text" />
+          </div>
+          <div class="button-filter-arrow-div">
+            <img alt="arrow ingredient button" id="arrow-ingredient" class="button-filter-arrow"
+              src="assets/arrowDown.svg" />
+          </div>
+        </div>
+        <div id="main-ingredient" class="dropdown-main button-filter-blue">
+          <ul id="section-ingredient" class="dropdown-menu button-filter-blue"></ul>
+        </div>
       </div>
-    </main>
-    <footer></footer>
-    <!-- JS -->
-    <!-- Data -->
-    <script src="./data/recipes.js"></script>
-    <!-- Factory -->
-    <script src="javascript/factory/recipeCard.js"></script>
-    <script src="javascript/factory/filterList.js"></script>
-    <!-- Page -->
-    <script src="javascript/pages/index.js"></script>
-    <!-- Utils -->
-    <script src="javascript/utils/dropdown.js"></script>
-    <script src="javascript/utils/tag.js"></script>
-    <script src="javascript/utils/algorithm.js"></script>
-  </body>
+      <!-- Fin -->
+      <!-- Dropdown Appareils -->
+      <div id="dropdown-apparel" tabindex="0" class="dropdown">
+        <div id="selectApparel" class="dropdown-select button-filter-green">
+          <div class="dropdown-selected">
+            <div id="searchApparelText" class="dropdown-text">Appareils</div>
+            <input autocomplete="off" id="searchApparel" placeholder="Rechercher un appareil"
+              class="dropdown-searchBar button-filter-green" type="text" />
+          </div>
+          <div class="button-filter-arrow-div">
+            <img alt="arrow apparel button" id="arrow-apparel" class="button-filter-arrow" src="assets/arrowDown.svg" />
+          </div>
+        </div>
+        <div id="main-apparel" class="dropdown-main button-filter-green">
+          <ul id="section-apparel" class="dropdown-menu button-filter-green"></ul>
+        </div>
+      </div>
+      <!-- Fin -->
+      <!-- Dropdown Ustensiles -->
+      <div id="dropdown-ustensil" tabindex="0" class="dropdown">
+        <div id="selectUstensil" class="dropdown-select button-filter-red">
+          <div class="dropdown-selected">
+            <div id="searchUstensilText" class="dropdown-text">
+              Ustensiles
+            </div>
+            <input autocomplete="off" id="searchUstensil" placeholder="Rechercher un ustensile"
+              class="dropdown-searchBar button-filter-red" type="text" />
+          </div>
+          <div class="button-filter-arrow-div">
+            <img alt="arrow ustensil button" id="arrow-ustensil" class="button-filter-arrow"
+              src="assets/arrowDown.svg" />
+          </div>
+        </div>
+        <div id="main-ustensil" class="dropdown-main button-filter-red">
+          <ul id="section-ustensil" class="dropdown-menu button-filter-red"></ul>
+        </div>
+      </div>
+      <!-- Fin -->
+    </div>
+
+    <div class="section-recipes">
+      <!-- Recipes Card Created Here ... -->
+    </div>
+    <div class="section-recipes-error">
+      <!-- Error msg here ... -->
+      Aucune recette ne correspond à la recherche
+      <img alt="error no recipes" class="section-recipes-error-svg" src="assets/NoData.svg" />
+    </div>
+  </main>
+  <footer></footer>
+  <!-- JS -->
+  <!-- Data -->
+  <script src="./data/recipes.js"></script>
+  <!-- Factory -->
+  <script src="javascript/factory/recipeCard.js"></script>
+  <script src="javascript/factory/filterList.js"></script>
+  <!-- Page -->
+  <script src="javascript/pages/index.js"></script>
+  <!-- Utils -->
+  <script src="javascript/utils/dropdown.js"></script>
+  <script src="javascript/utils/tag.js"></script>
+  <script src="javascript/utils/algorithm.js"></script>
+</body>
+
 </html>
