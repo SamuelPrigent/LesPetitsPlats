@@ -1,51 +1,55 @@
 // Create Card HTML
 function getRecipeCard(data) {
   // main div
-  const article = document.createElement("div");
-  article.classList.add("card-recipes");
+  const article = document.createElement('div');
+  article.classList.add('card-recipes');
   // Img (vide)
-  const imgDiv = document.createElement("div");
-  imgDiv.classList.add("card-recipes-img");
+  const imgDiv = document.createElement('div');
+  imgDiv.classList.add('card-recipes-div');
+  //
+  const img = document.createElement('img');
+  img.classList.add('card-recipes-img');
+  img.src = data.image;
   // Text
-  const textDiv = document.createElement("div");
-  textDiv.classList.add("card-recipes-txt");
+  const textDiv = document.createElement('div');
+  textDiv.classList.add('card-recipes-txt');
   // Text Top
-  const textTop = document.createElement("div");
-  textTop.classList.add("card-recipes-txt-top");
+  const textTop = document.createElement('div');
+  textTop.classList.add('card-recipes-txt-top');
   // Recipe Top Left Title
-  const textTopTitle = document.createElement("h2");
+  const textTopTitle = document.createElement('h2');
   textTopTitle.innerText = data.name;
-  textTopTitle.classList.add("card-recipes-txt-top-left");
+  textTopTitle.classList.add('card-recipes-txt-top-left');
   // Recipe Top Right
-  const textTopRight = document.createElement("div");
-  textTopRight.classList.add("card-recipes-txt-top-right");
+  const textTopRight = document.createElement('div');
+  textTopRight.classList.add('card-recipes-txt-top-right');
   // Recipe Top Right - Logo
-  const textTopRightLogo = document.createElement("img");
-  textTopRightLogo.classList.add("time-icon");
-  textTopRightLogo.setAttribute("src", "assets/time.svg");
+  const textTopRightLogo = document.createElement('img');
+  textTopRightLogo.classList.add('time-icon');
+  textTopRightLogo.setAttribute('src', 'assets/time.svg');
   // Recipe Top Right - Time
-  const textTopRightTime = document.createElement("div");
+  const textTopRightTime = document.createElement('div');
   textTopRightTime.innerText = `${data.time} min`;
   // Text Bottom
-  const textBottom = document.createElement("div");
-  textBottom.classList.add("card-recipes-txt-bottom");
+  const textBottom = document.createElement('div');
+  textBottom.classList.add('card-recipes-txt-bottom');
   // Text Bottom Left
-  const textBottomLeft = document.createElement("div");
-  textBottomLeft.classList.add("card-recipes-txt-bottom-left");
+  const textBottomLeft = document.createElement('div');
+  textBottomLeft.classList.add('card-recipes-txt-bottom-left');
 
   // BOUCLE => ingredients.forEach
   const ingredients = data.ingredients;
-  ingredients.forEach((element) => {
+  ingredients.forEach(element => {
     // new line
-    const newLine = document.createElement("div");
-    newLine.classList.add("card-recipes-txt-bottom-left-line");
+    const newLine = document.createElement('div');
+    newLine.classList.add('card-recipes-txt-bottom-left-line');
     // Ingredient Name
-    const ingredientName = document.createElement("div");
-    ingredientName.classList.add("card-recipes-txt-bottom-left-bold");
+    const ingredientName = document.createElement('div');
+    ingredientName.classList.add('card-recipes-txt-bottom-left-bold');
     ingredientName.innerText = `${element.ingredient}`;
     // Ingredient Qty
-    const ingredientQty = document.createElement("div");
-    ingredientQty.classList.add("card-recipes-txt-bottom-left-quantity");
+    const ingredientQty = document.createElement('div');
+    ingredientQty.classList.add('card-recipes-txt-bottom-left-quantity');
     if (element.quantity) {
       ingredientQty.innerText = `${element.quantity}`;
     }
@@ -53,19 +57,19 @@ function getRecipeCard(data) {
       ingredientQty.innerText = `${element.quantity}${element.unit}`;
       // Abréviations des unités
       // Cuillère à soupe
-      if (element.unit == "cuillère à soupe") {
+      if (element.unit == 'cuillère à soupe') {
         ingredientQty.innerText = `${element.quantity}c.à.s`;
       }
       // Cuillères à soupe
-      if (element.unit == "cuillères à soupe") {
+      if (element.unit == 'cuillères à soupe') {
         ingredientQty.innerText = `${element.quantity}c.à.s`;
       }
       // Grammes
-      if (element.unit == "grammes") {
+      if (element.unit == 'grammes') {
         ingredientQty.innerText = `${element.quantity}g`;
       }
       // Tranches
-      if (element.unit == "tranches") {
+      if (element.unit == 'tranches') {
         ingredientQty.innerText = `${element.quantity}tr`;
       }
     }
@@ -76,20 +80,21 @@ function getRecipeCard(data) {
   });
 
   // Text Bottom Right
-  const textBottomRight = document.createElement("div");
-  textBottomRight.classList.add("card-recipes-txt-bottom-right");
+  const textBottomRight = document.createElement('div');
+  textBottomRight.classList.add('card-recipes-txt-bottom-right');
   textBottomRight.innerText = data.description;
 
   // data Attribute
   if (data.appliance) {
-    article.setAttribute("data-apparellist", data.appliance);
+    article.setAttribute('data-apparellist', data.appliance);
   }
   if (data.ustensils) {
-    article.setAttribute("data-ustensillist", data.ustensils);
+    article.setAttribute('data-ustensillist', data.ustensils);
   }
 
   // article
   article.appendChild(imgDiv);
+  imgDiv.appendChild(img);
   article.appendChild(textDiv);
   // textDiv
   textDiv.appendChild(textTop);
@@ -106,7 +111,7 @@ function getRecipeCard(data) {
   // Text Bottom Left // via boucle
 
   // Nav via tab index
-  article.setAttribute("tabindex", 0);
+  article.setAttribute('tabindex', 0);
 
   return article;
 }

@@ -227,8 +227,8 @@ header {
   font-size: 15.5px;
 }
 
-.dropdown-open {
-}
+/* .dropdown-open {
+} */
 
 .dropdown * {
   box-sizing: border-box;
@@ -364,19 +364,19 @@ header {
 }
 
 /* Si je souhaite mettre un style lors du click sur un filtre */
-.dropdown-select-clicked {
-  /* border: 2px solid blue; */
-  /* box-shadow: 0px 0px 0px 3px rgba(0, 142, 237, 0.263); */
-}
+/* .dropdown-select-clicked { */
+/* border: 2px solid blue; */
+/* box-shadow: 0px 0px 0px 3px rgba(0, 142, 237, 0.263); */
+/* } */
 
 .dropdown-arrow-rotate {
   transform: rotate(180deg);
 }
 
 /* When we click one time on a filter */
-.active {
-  /* background-color: rgb(41, 41, 41); */
-}
+/* .active { */
+/* background-color: rgb(41, 41, 41); */
+/* } */
 
 /* Recipes */
 
@@ -428,6 +428,9 @@ header {
 .card-recipes {
   border: 1px solid #0000ff00;
   min-height: 353px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 }
 
 .card-recipes:focus {
@@ -438,18 +441,27 @@ header {
 }
 
 /* img lambda */
-.card-recipes-img {
-  background-color: #c7bebe;
+.card-recipes-div {
+  display: flex;
   min-height: 49%;
   max-height: 49%;
+}
+
+.card-recipes-img {
+  background-color: #c7bebe;
+  /* min-height: 49%;
+  max-height: 49%; */
   border-radius: 5px 5px 0px 0px;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
 }
 
 .card-recipes-txt {
   display: flex;
   border-radius: 0px 0px 5px 5px;
   flex-direction: column;
-  font-family: "Noto Sans", sans-serif;
+  font-family: 'Noto Sans', sans-serif;
   font-weight: 400;
   background-color: #e7e7e7;
   min-height: 51%;
@@ -542,6 +554,7 @@ header {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box !important;
+  line-clamp: 6;
   -webkit-line-clamp: 6;
   -webkit-box-orient: vertical;
   white-space: normal;
